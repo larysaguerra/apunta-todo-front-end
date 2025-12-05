@@ -1,0 +1,97 @@
+:root {
+    --color-principal: #004d40;
+    --color-acento: #a7ffeb;
+    --color-fondo: #f4f4f4;
+    --color-texto: #333;
+    --color-claro: #fff;
+    --borde-gris: #ccc;
+}
+
+section {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.fila-reversa {
+    flex-direction: row-reverse;
+    background-color: var(--color-fondo);
+}
+
+.item {
+    flex: 1;
+}
+
+.item p {
+    margin-top: 20px;
+}
+
+.item li {
+    margin-top: 10px;
+}
+
+.item-texto {
+    padding: 50px;
+}
+
+.item-imagen img {
+    width: 100%;
+    height: auto;
+}
+
+.seccion-funcionalidades {
+    min-height: 80vh;
+    padding: 20px;
+    text-align: center;
+    background-color: var(--color-principal);
+}
+
+.seccion-funcionalidades h2 {
+    font-size: 2rem;
+    margin-bottom: 40px;
+    color: var(--color-claro);
+}
+
+.caja-funcionalidades {
+    display: flex;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 10px;
+}
+
+.item-funcionalidad {
+    background: var(--color-claro);
+    padding: 20px;
+    border-radius: 4px;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.05);
+}
+
+.item-funcionalidad h3 {
+    font-size: 1.3rem;
+    margin-bottom: 10px;
+    color: var(--color-principal);
+}
+
+.item-funcionalidad .icono-reloj,
+.item-funcionalidad .icono-carro,
+.item-funcionalidad .icono-movil {
+    font-size: 2.5rem;
+    display: block;
+    margin-bottom: 15px;
+}
+
+@media (max-width: 768px) {
+    .fila {
+        flex-direction: column;
+        margin-bottom: 20px;
+    }
+
+    .item {
+        width: 100%;
+        padding: 20px;
+    }
+
+    .caja-funcionalidades {
+        flex-direction: column;
+    }
+
+}

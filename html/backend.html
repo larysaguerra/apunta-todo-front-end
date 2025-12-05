@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apunta ToDo</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/erd.css">
+    <link rel="shortcut icon" href="../images/logo.png" type="image/x-icon">
+</head>
+
+<body>
+    <header>
+        <div class="cabecera">
+            <a href="../html/index.html" class="logotipo">
+                <img src="../images/logo_apunta_todo_con_nombre.png" alt="Logo Apunta_todo">
+            </a>
+            <nav class="navegacion-principal">
+                <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="services.html">Servicios</a></li>
+                    <li><a href="erd.html">Modelo</a></li>
+                    <li><a href="contact.html">Nosotros</a></li>
+                    <li><a href="#">Backend</a></li>
+                </ul>
+            </nav>
+            <div class="acciones-cabecera">
+                <a href="signup.html" class="boton boton-secundario">Registrarse</a>
+                <a href="login.html" class="boton">Iniciar Sesión</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+
+        <div class="contenedor-reglas">
+            <h1>Backend</h1>
+            <p class="introduccion">Desarrollo en java que demuestra la lógica del backend de Apunta ToDo.</p>
+            <pre><code>
+                
+import java.util.Scanner;
+
+public class ApuntaTodo {
+
+    public static void main(String[] args) {
+
+        Scanner scanner = new Scanner(System.in);
+
+        final String NOMBRE_ADMINISTRADOR = "admin";
+        final String CONTRASENA_ADMINISTRADOR = "12345";
+
+        // Variables de opciones
+        int opcionGeneral = 0;
+        int opcionAdministrador = 0;
+        int opcionUsuario = 0;
+        int opcionLista = 0;
+
+        // Informacion de roles
+        int idRoles[] = {1, 2};
+        String[] nombresRoles = {"Administrador", "Usuario"};
+        String[] descripcionesRoles = {"Control total", "Acceso limitado"};
+
+        // Informacion de usuarios
+        int[] idRolesUsuarios = new int[10];
+        String[] nombresUsuarios = new String[10];
+        String[] apellidosUsuarios = new String[10];
+        String[] correosUsuarios = new String[10];
+        String[] clavesUsuarios = new String[10];
+
+        // Informacion de categorías
+        String[] categorias = {"Frutas", "Verduras", "Carnes", "Lácteos", "Aseo", "Granos", "Panadería", "Bebidas", "Snacks", "Congelados"};
+
+        // Informacion de productos
+        String[] nombreProductos = {
+                "Manzana", "Banano", "Fresa", "Mango", "Uva",
+                "Zanahoria", "Tomate", "Cebolla", "Lechuga", "Papa",
+                "Pollo", "Res", "Cerdo", "Pescado", "Tocino",
+                "Leche", "Queso", "Yogur", "Mantequilla", "Kumis",
+                "Jabón", "Shampoo", "Papel Higiénico", "Detergente", "Desinfectante",
+                "Arroz", "Frijoles", "Lentejas", "Garbanzos", "Maíz",
+                "Pan Blanco", "Pan Integral", "Croissant", "Galletas", "Rollos de Canela",
+                "Agua", "Jugo", "Café", "Té", "Gaseosa",
+                "Papas Fritas", "Chocolatina", "Maní", "Galletas Saladas", "Palomitas",
+                "Helado", "Pizza Congelada", "Vegetales Mixtos", "Nuggets", "Empanadas"
+        };
+        int[] categoriaProductos = {
+                0, 0, 0, 0, 0,
+                1, 1, 1, 1, 1,
+                2, 2, 2, 2, 2,
+                3, 3, 3, 3, 3,
+                4, 4, 4, 4, 4,
+                5, 5, 5, 5, 5,
+                6, 6, 6, 6, 6,
+                7, 7, 7, 7, 7,
+                8, 8, 8, 8, 8,
+                9, 9, 9, 9, 9
+        };
+
+        // Informacion de listas
+        String[] nombreListas = new String[100];
+        int[] usuarioListas = new int[100];
+
+        // Detalle de listas
+        String[] productosListas = new String[100];
+        int[] cantidadProductos = new int[100];
+
+        do {
+
+            System.out.println("|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||");
+            System.out.println("---------------------------- Bienvenido a ApuntaTodo ----------------------------");
+            System.out.println("|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||");
+            System.out.println("""
+                    Selecciona una opcion para continuar:
+                    1. Administrador
+                    2. Usuario
+                    3. Salir
+                    """);
+
+            opcionGeneral = scanner.nextInt();
+            scanner.nextLine();
+
+            switch (opcionGeneral) {
+                case 1:
+                    System.out.println("============================ Bienvenido administrador ============================");
+
+                    System.out.println("Ingresa nombre: ");
+                    String nombreAdministrador = scanner.nextLine();
+
+                    System.out.println("Ingresa contraseña: ");
+                    String claveAdministrador = scanner.nextLine();
+
+                    if (nombreAdministrador.equals(NOMBRE_ADMINISTRADOR) && claveAdministrador.equals(CONTRASENA_ADMINISTRADOR)) {
+                        System.out.println("Selecciona una opcion para continuar: ");
+
+                        do {
+
+                            System.out.println("""
+                                    ---------------------------- Menú de administrador ----------------------------
+                                    1. Crear categoria
+                                    2. Leer categorias
+                                    3. Actualizar categoria
+                                    4. Eliminar categoria
+                                    5. Ver usuarios
+                                    6. Eliminar usuario
+                                    7. Ver roles
+                                    8. Editar roles
+                                    9. Volver al menú anterior
+                                    """);
+
+                            opcionAdministrador = scanner.nextInt();
+                            scanner.nextLine();
+                            switch (opcionAdministrador) {
+                                case 1:
+                                    System.out.println("---------------------------- Crear nueva categoria ---------------------------- ");
+                                    int posicionVacia = -1;
+                                    for (int i = 0; i < categorias.length; i++) {
+                                        if (categorias[i] == null || categorias[i].isEmpty()) {
+                                            posicionVacia = i;
+                                            break;
+                                        }
+                                    }
+                                    if (posicionVacia != -1) {
+                                        System.out.println("Ingresa nombre de la nueva categoria: ");
+                                        String nuevaCategoria = scanner.nextLine();
+
+                                        categorias[posicionVacia] = nuevaCategoria;
+                                        System.out.println("Categoria creada exitosamente.");
+                                    } else {
+                                        System.out.println("No hay espacio para crear una nueva categoria. Debes eliminar una existente primero.");
+
+                                    }
+                                    System.out.println(".........................................................................");
+                                    break;
+                                case 2:
+                                    System.out.println("---------------------------- Leer categorias ----------------------------");
+                                    for (int i = 0; i < categorias.length; i++) {
+                                        if (categorias[i] != null) {
+                                            System.out.println((i + 1) + ") " + categorias[i]);
+                                        }
+                                    }
+                                    System.out.println(".........................................................................");
+                                    break;
+                                case 3:
+                                    System.out.println("---------------------------- Actualizar categoria ----------------------------");
+                                    for (String categoria : categorias) {
+                                        System.out.println(" - " + categoria);
+                                    }
+                                    System.out.println("Ingresa el nombre de la categoria a actualizar: ");
+                                    String categoriaBuscar = scanner.nextLine();
+
+                                    for (int i = 0; i < categorias.length; i++) {
+                                        if (categorias[i] != null && categorias[i].equalsIgnoreCase(categoriaBuscar)) {
+                                            System.out.println("Ingresa nuevo nombre de la categoria: ");
+                                            categorias[i] = scanner.nextLine();
+                                            System.out.println("Categoria actualizada exitosamente.");
+                                        }
+                                    }
+                                    System.out.println(".........................................................................");
+                                    break;
+                                case 4:
+                                    System.out.println("---------------------------- Eliminar categoria ----------------------------");
+                                    for (String categoria : categorias) {
+                                        System.out.println(" - " + categoria);
+                                    }
+                                    System.out.println("Ingresa el nombre de la categoria a eliminar: ");
+                                    String categoriaEliminar = scanner.nextLine();
+
+                                    int posicionCategoriaEliminar = -1;
+                                    for (int i = 0; i < categorias.length; i++) {
+                                        if (categorias[i] != null && categorias[i].equalsIgnoreCase(categoriaEliminar)) {
+                                            posicionCategoriaEliminar = i;
+                                            break;
+                                        }
+                                    }
+                                    if (posicionCategoriaEliminar != -1) {
+                                        categorias[posicionCategoriaEliminar] = null;
+                                        System.out.println("Categoria eliminada exitosamente.");
+                                    } else {
+                                        System.out.println("No se encontró una categoria con ese nombre.");
+                                    }
+
+                                    System.out.println(".........................................................................");
+                                    break;
+                                case 5:
+                                    System.out.println("---------------------------- Ver usuarios ----------------------------");
+                                    for (int i = 0; i < nombresUsuarios.length; i++) {
+                                        if (nombresUsuarios[i] != null) {
+                                            System.out.println((i + 1) + ") " + nombresUsuarios[i] + " " + apellidosUsuarios[i] + " - " + correosUsuarios[i]);
+                                        }
+                                    }
+                                    System.out.println(".........................................................................");
+                                    break;
+                                case 6:
+                                    System.out.println("---------------------------- Eliminar usuario ----------------------------");
+
+                                    System.out.println("Ingresa el correo del usuario a eliminar: ");
+                                    String correoEliminar = scanner.nextLine();
+
+                                    int posicionUsuarioEliminar = -1;
+                                    for (int i = 0; i < correosUsuarios.length; i++) {
+                                        if (correosUsuarios[i] != null && correosUsuarios[i].equalsIgnoreCase(correoEliminar)) {
+                                            posicionUsuarioEliminar = i;
+                                            break;
+                                        }
+                                    }
+                                    if (posicionUsuarioEliminar != -1) {
+                                        idRolesUsuarios[posicionUsuarioEliminar] = 0;
+                                        nombresUsuarios[posicionUsuarioEliminar] = null;
+                                        apellidosUsuarios[posicionUsuarioEliminar] = null;
+                                        correosUsuarios[posicionUsuarioEliminar] = null;
+                                        clavesUsuarios[posicionUsuarioEliminar] = null;
+                                        System.out.println("Usuario eliminado exitosamente.");
+                                    } else {
+                                        System.out.println("No se encontró un usuario con ese correo.");
+                                    }
+                                    System.out.println(".........................................................................");
+                                    break;
+                                case 7:
+                                    System.out.println("---------------------------- Ver roles ----------------------------");
+                                    for (int i = 0; i < nombresRoles.length; i++) {
+                                        System.out.println((i + 1) + ") " + nombresRoles[i] + " - " + descripcionesRoles[i]);
+                                    }
+                                    System.out.println(".........................................................................");
+                                    break;
+                                case 8:
+                                    System.out.println("---------------------------- Editar roles ----------------------------");
+                                    for (int i = 0; i < nombresRoles.length; i++) {
+                                        System.out.println((i + 1) + ") " + nombresRoles[i] + " - " + descripcionesRoles[i]);
+                                    }
+                                    System.out.println("Ingresa el nombre del rol a editar: ");
+                                    String rolEditar = scanner.nextLine();
+
+                                    for (int i = 0; i < nombresRoles.length; i++) {
+                                        if (nombresRoles[i].equalsIgnoreCase(rolEditar)) {
+                                            System.out.println("Ingresa nuevo nombre del rol: ");
+                                            nombresRoles[i] = scanner.nextLine();
+
+                                            System.out.println("Ingresa nueva descripción del rol: ");
+                                            descripcionesRoles[i] = scanner.nextLine();
+
+                                            System.out.println("Rol actualizado exitosamente.");
+                                        }
+                                    }
+                                    System.out.println(".........................................................................");
+                                    break;
+                                case 9:
+                                    System.out.println("Volviendo al menú anterior.");
+                                    System.out.println(".........................................................................");
+                                    break;
+                                default:
+                                    System.out.println("Opción no válida. Volviendo al menú anterior.");
+                            }
+                        } while (opcionAdministrador != 10);
+
+                    } else {
+                        System.out.println("Credenciales incorrectas! Acceso denegado...");
+                        System.out.println(".........................................................................");
+                        return;
+                    }
+                    break;
+
+                case 2:
+                    do {
+                        System.out.println("""
+                                ============================ Menú de usuario ============================
+                                1. Crear usuario
+                                2. Iniciar sesion
+                                3. Volver al menú anterior
+                                """);
+                        opcionUsuario = scanner.nextInt();
+                        scanner.nextLine();
+
+                        switch (opcionUsuario) {
+                            case 1:
+                                System.out.println("---------------------------- Crear usuario ----------------------------");
+
+                                System.out.println("Ingresa nombre del usuario: ");
+                                String nombre = scanner.nextLine();
+
+                                System.out.println("Ingresa apellido del usuario: ");
+                                String apellido = scanner.nextLine();
+
+                                System.out.println("Ingresa correo del usuario: ");
+                                String correo = scanner.nextLine();
+
+                                System.out.println("Ingresa contraseña del usuario: ");
+                                String contrasena = scanner.nextLine();
+
+                                for (int i = 0; i < nombresUsuarios.length; i++) {
+                                    if (nombresUsuarios[i] == null) {
+                                        idRolesUsuarios[i] = idRoles[1]; // Rol de usuario
+                                        nombresUsuarios[i] = nombre;
+                                        apellidosUsuarios[i] = apellido;
+                                        correosUsuarios[i] = correo;
+                                        clavesUsuarios[i] = contrasena;
+                                        System.out.println("Usuario creado exitosamente. " + nombresUsuarios[i] + " " + apellidosUsuarios[i] + " - " + correosUsuarios[i] + ".");
+                                        break;
+                                    }
+                                }
+                                System.out.println(".........................................................................");
+                                break;
+                            case 2:
+                                System.out.println("---------------------------- Iniciar sesión ----------------------------");
+
+                                System.out.println("Ingresa tu correo: ");
+                                String correoLogin = scanner.nextLine();
+
+                                System.out.println("Ingresa tu contraseña: ");
+                                String contrasenaLogin = scanner.nextLine();
+
+                                int posicionUsuario = -1;
+                                for (int i = 0; i < correosUsuarios.length; i++) {
+                                    if (correosUsuarios[i] != null && correosUsuarios[i].equals(correoLogin) && clavesUsuarios[i].equals(contrasenaLogin)) {
+                                        posicionUsuario = i;
+                                        break;
+                                    }
+                                }
+
+                                if (posicionUsuario != -1) {
+                                    System.out.println("Inicio de sesión exitoso. ¡Bienvenido " + nombresUsuarios[posicionUsuario] + "!");
+                                    do {
+                                        System.out.println("""
+                                                ---------------------------- Menú de listas de compras ----------------------------
+                                                1. Crear lista de compras
+                                                2. Agregar productos a la lista
+                                                3. Ver listas de compras
+                                                4. Eliminar lista de compras
+                                                5. Cerrar sesión.
+                                                """);
+                                        opcionLista = scanner.nextInt();
+                                        scanner.nextLine();
+                                        switch (opcionLista) {
+                                            case 1:
+                                                System.out.println("---------------------------- Crear lista de compras ----------------------------");
+                                                System.out.println("Ingresa el nombre de la lista: ");
+                                                String nombreLista = scanner.nextLine();
+
+                                                int posicionListaVacia = -1;
+                                                for (int i = 0; i < nombreListas.length; i++) {
+                                                    if (nombreListas[i] == null) {
+                                                        posicionListaVacia = i;
+                                                        break;
+                                                    }
+                                                }
+                                                if (posicionListaVacia != -1) {
+                                                    nombreListas[posicionListaVacia] = nombreLista;
+                                                    usuarioListas[posicionListaVacia] = posicionUsuario;
+                                                    System.out.println("Lista de compras " + nombreListas[posicionListaVacia] + " creada exitosamente.");
+                                                } else {
+                                                    System.out.println("No hay espacio para crear una nueva lista de compras. Debes eliminar una existente primero.");
+                                                }
+                                                System.out.println(".........................................................................");
+                                                break;
+                                            case 2:
+                                                System.out.println("---------------------------- Agregar productos a la lista ----------------------------");
+
+                                                for (int i = 0; i < nombreListas.length; i++) {
+                                                    if (nombreListas[i] != null && usuarioListas[i] == posicionUsuario) {
+                                                        System.out.println((i + 1) + ") " + nombreListas[i]);
+                                                    }
+                                                }
+
+                                                System.out.println("Ingresa el nombre de la lista: ");
+                                                String listaBuscar = scanner.nextLine();
+                                                int posicionLista = -1;
+
+                                                // Buscar lista
+                                                for (int i = 0; i < nombreListas.length; i++) {
+                                                    if (nombreListas[i] != null && nombreListas[i].equalsIgnoreCase(listaBuscar)) {
+                                                        posicionLista = i;
+                                                    }
+                                                }
+
+                                                if (posicionLista == -1) {
+                                                    System.out.println("No se encontró la lista.");
+                                                } else {
+
+                                                    // Mostrar productos disponibles
+                                                    System.out.println("---------------------------- Agrega productos a la lista " + nombreListas[posicionLista] + " ----------------------------");
+                                                    System.out.println("Productos disponibles:");
+                                                    for (int i = 0; i < nombreProductos.length; i++) {
+                                                        System.out.println((i + 1) + ") " + nombreProductos[i] + " - (" + categorias[categoriaProductos[i]] + ")");
+                                                    }
+
+                                                    System.out.println("Ingrese el número del producto que desea agregar: ");
+                                                    int productoSeleccionado = scanner.nextInt();
+                                                    scanner.nextLine();
+                                                    System.out.println("Cantidad del producto: ");
+                                                    int cantidadProducto = scanner.nextInt();
+                                                    scanner.nextLine();
+
+                                                    if (productoSeleccionado > 0 && productoSeleccionado <= nombreProductos.length) {
+                                                        String productoAgregar = nombreProductos[productoSeleccionado - 1];
+                                                        productosListas[posicionLista] = productoAgregar;
+                                                        cantidadProductos[posicionLista] = cantidadProducto;
+                                                        System.out.println("Producto agregado a la lista.");
+                                                    } else {
+                                                        System.out.println("Selección de producto no válida.");
+                                                    }
+
+                                                }
+                                                System.out.println(".........................................................................");
+                                                break;
+                                            case 3:
+                                                System.out.println("---------------------------- Ver listas de compras ----------------------------");
+                                                for (int i = 0; i < nombreListas.length; i++) {
+                                                    if (nombreListas[i] != null && usuarioListas[i] == posicionUsuario) {
+                                                        System.out.println((i + 1) + ") " + nombreListas[i]);
+                                                        System.out.println("-----> (" + cantidadProductos[i] + ")" + productosListas[i]);
+                                                    }
+                                                }
+                                                System.out.println(".........................................................................");
+                                                break;
+                                            case 4:
+                                                System.out.println("---------------------------- Eliminar lista de compras ----------------------------");
+                                                for (int i = 0; i < nombreListas.length; i++) {
+                                                    if (nombreListas[i] != null && usuarioListas[i] == posicionUsuario) {
+                                                        System.out.println((i + 1) + ") " + nombreListas[i]);
+                                                    }
+                                                }
+                                                System.out.println("Ingresa el numero de la lista a eliminar: ");
+                                                int listaEliminar = scanner.nextInt();
+                                                scanner.nextLine();
+                                                if (listaEliminar > 0 && listaEliminar <= nombreListas.length) {
+                                                    int posicionListaEliminar = listaEliminar - 1;
+                                                    if (usuarioListas[posicionListaEliminar] == posicionUsuario) {
+                                                        nombreListas[posicionListaEliminar] = null;
+                                                        productosListas[posicionListaEliminar] = null;
+                                                        cantidadProductos[posicionListaEliminar] = 0;
+                                                        System.out.println("Lista eliminada exitosamente.");
+                                                    } else {
+                                                        System.out.println("No tienes permiso para eliminar esta lista.");
+                                                    }
+                                                } else {
+                                                    System.out.println("Número de lista no válido.");
+                                                }
+                                                System.out.println(".........................................................................");
+                                                break;
+                                            case 5:
+                                                System.out.println("Cerrando sesión.");
+                                                System.out.println(".........................................................................");
+                                                break;
+                                            default:
+                                                System.out.println("Opción no válida. Por favor, intente de nuevo.");
+                                        }
+                                    } while (opcionLista != 5);
+                                } else {
+                                    System.out.println("Correo o contraseña incorrectos. Inténtalo de nuevo.");
+                                }
+                                System.out.println(".........................................................................");
+                                break;
+                            case 3:
+                                System.out.println("Volviendo al menú anterior.");
+                                System.out.println(".........................................................................");
+                                break;
+                            default:
+                                System.out.println("Opción no válida. Por favor, intente de nuevo.");
+                        }
+
+                    } while (opcionUsuario != 3);
+                    break;
+                case 3:
+                    System.out.println("Saliendo del programa. ¡Hasta luego!");
+                    System.out.println(".........................................................................");
+                    break;
+                default:
+                    System.out.println("Opción no válida. Por favor, intente de nuevo.");
+            }
+
+        } while (opcionGeneral != 3);
+
+    }
+
+}
+
+            </code></pre>
+        </div>
+
+    </main>
+
+    <footer>
+        <div class="pie">
+            <a href="#" class="logotipo">
+                <img src="../images/logo_apunta_todo_con_nombre_gris.png" alt="Logo Apunta_todo">
+            </a>
+            <div class="redes">
+                <img src="../images/icon_facebook.png" alt="icono facebook">
+                <a href="https://www.facebook.com/" target="_blank">@facebook</a>
+                <img src="../images/icon_whatsapp.png" alt="icono whatsapp">
+                <a href="https://www.whatsapp.com/" target="_blank">@whatsapp</a>
+                <img src="../images/icon_instagram.png" alt="icono instagram">
+                <a href="https://www.instagram.com/" target="_blank">@instagram</a>
+            </div>
+        </div>
+        <p class="derechos">Copyright ©️ 2025. Apunta ToDo. Todos los derechos reservados.</p>
+        <p class="derechos">Proyecto Integrador - Cesde 2025</p>
+    </footer>
+</body>
+
+</html>

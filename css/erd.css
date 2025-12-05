@@ -1,0 +1,123 @@
+:root {
+    --color-principal: #004d40;
+    --color-acento: #a7ffeb;
+    --color-fondo: #f4f4f4;
+    --color-texto: #333;
+    --color-claro: #fff;
+    --borde-gris: #ccc;
+}
+
+.contenedor-reglas {
+    max-width: 90%;
+    margin: 50px auto;
+    padding: 30px;
+    background-color: var(--color-claro);
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.contenedor-reglas h1 {
+    text-align: center;
+    margin-bottom: 5px;
+    border-bottom: 2px solid var(--color-principal);
+    padding-bottom: 15px;
+}
+
+.introduccion {
+    text-align: center;
+    margin-bottom: 40px;
+    font-size: 1.1em;
+}
+
+.imagen-erd {
+    width: 100%;
+}
+
+.contenedor-reglas h2 {
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+.lista-reglas {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.lista-reglas li {
+    background-color: var(--color-fondo);
+    margin-bottom: 18px;
+    padding: 18px;
+    border-left: 6px solid var(--color-principal);
+    border-radius: 5px;
+    counter-increment: rule-counter;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.03);
+    transition: transform 0.2s ease;
+}
+
+
+.lista-reglas li::before {
+    content: counter(rule-counter) ". ";
+    color: var(--color-principal);
+    font-weight: bold;
+    font-size: 1.2em;
+    margin-right: 10px;
+}
+
+.descripcion {
+    margin-top: 10px;
+    margin-left: 30px;
+    font-size: 0.95em;
+    color: #555;
+    border-top: 1px dotted var(--borde-gris);
+    padding-top: 10px;
+    opacity: 0.9;
+}
+
+pre {
+    background: #21302d;
+    color: var(--color-claro);
+    padding: 5px;
+    border-radius: 8px;
+    overflow-x: auto;
+    font-size: .75rem;
+    line-height: 1.5;
+    margin-top: 20px;
+}
+
+code {
+    font-family: "Courier New", monospace;
+}
+
+
+@media (max-width: 768px) {
+    .contenedor-reglas {
+        margin: 30px 15px;
+        padding: 20px;
+    }
+
+    h1 {
+        font-size: 2em;
+    }
+
+    h2 {
+        font-size: 1.6em;
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 1.8em;
+    }
+
+    h2 {
+        font-size: 1.4em;
+    }
+
+    .lista-reglas li {
+        padding: 15px;
+    }
+
+    .descripcion {
+        margin-left: 20px;
+    }
+}

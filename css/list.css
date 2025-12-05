@@ -1,0 +1,118 @@
+:root {
+    --color-principal: #004d40;
+    --color-acento: #a7ffeb;
+    --color-fondo: #f4f4f4;
+    --color-texto: #333;
+    --color-claro: #fff;
+    --borde-gris: #ccc;
+}
+
+.logo {
+    font-size: 20px;
+    font-weight: bold;
+    margin-right: 30px;
+}
+
+.user-area {
+    margin-left: auto;
+}
+
+.icon {
+    font-size: 20px;
+    margin-left: 15px;
+    cursor: pointer;
+}
+
+main {
+    padding: 30px;
+}
+
+.add-note {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+
+.add-note input {
+    width: 60%;
+    padding: 15px;
+    border-radius: 25px;
+    border: 1px solid var(--borde-gris);
+    background-color: white;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.section-title {
+    margin: 10px 0 20px 15px;
+    color: var(--borde-gris);
+    font-weight: bold;
+}
+
+.cards-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 10px;
+    grid-template-rows: min-content;
+}
+
+
+.card h3 {
+    margin-top: 0;
+}
+
+.card ul {
+    padding-left: 20px;
+    margin-top: 10px;
+}
+
+.card.red {
+    background-color: var(--color-acento);
+}
+
+.card {
+    width: 250px;
+    background: var(--color-claro);
+    border-radius: 8px;
+    padding: 10px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.12);
+    height: fit-content;
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.card-header h3 {
+    margin: 0;
+    font-size: 1.2rem;
+}
+
+.card-actions {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.card-actions button {
+    background: transparent;
+    border: none;
+    font-size: 1.2rem;
+    cursor: pointer;
+    margin-left: 6px;
+}
+
+.card-actions button:hover {
+    opacity: 0.7;
+}
+
+.card-caption {
+    font-size: 0.75rem;
+    color: var(--borde-gris);
+    margin: 5px 0 15px 0;
+}
+
+.card-content p {
+    margin: 8px 0;
+    font-size: 0.95rem;
+}

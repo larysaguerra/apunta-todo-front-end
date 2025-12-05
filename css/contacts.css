@@ -1,0 +1,119 @@
+:root {
+    --color-principal: #004d40;
+    --color-acento: #a7ffeb;
+    --color-fondo: #f4f4f4;
+    --color-texto: #333;
+    --color-claro: #fff;
+    --borde-gris: #ccc;
+}
+
+.contenedor-titulo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 15px;
+    text-align: center;
+}
+
+.nosotros {
+    padding: 20px;
+    min-height: 80vh;
+}
+
+.cards-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin: 20px auto;
+}
+
+.card {
+    width: 300px;
+    background-color: var(--color-principal);
+    border-radius: 4px;
+    overflow: hidden;
+    box-shadow: 0px 4px 18px rgba(0, 0, 0, 0.15);
+    padding: 20px;
+    text-align: center;
+    transition: transform 0.25s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.card-img-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 15px;
+}
+
+.card-img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    border: 3px solid var(--color-claro);
+}
+
+.card-content h3 {
+    margin-bottom: 10px;
+    color: var(--color-claro);
+}
+
+.card-content p {
+    color: var(--color-claro);
+    line-height: 1.5;
+    margin-bottom: 12px;
+}
+
+.card-buttons {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.btn {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    text-decoration: none;
+    padding: 8px 15px;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #fff;
+    transition: 0.2s ease;
+}
+
+.lk {
+    background: #0A66C2;
+}
+
+.lk:hover {
+    background: #084787;
+}
+
+.git {
+    background: #1e1e1e;
+}
+
+.git:hover {
+    background: #000000;
+}
+
+/* RESPONSIVO */
+@media (max-width: 768px) {
+    .cards-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .card {
+        width: 100%;
+        max-width: 350px;
+    }
+}

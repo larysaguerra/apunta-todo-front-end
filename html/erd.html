@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apunta ToDo</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/erd.css">
+    <link rel="shortcut icon" href="../images/logo.png" type="image/x-icon">
+</head>
+
+<body>
+    <header>
+        <div class="cabecera">
+            <a href="../html/index.html" class="logotipo">
+                <img src="../images/logo_apunta_todo_con_nombre.png" alt="Logo Apunta_todo">
+            </a>
+            <nav class="navegacion-principal">
+                <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="services.html">Servicios</a></li>
+                    <li><a href="#">Modelo</a></li>
+                    <li><a href="contact.html">Nosotros</a></li>
+                    <li><a href="backend.html">Backend</a></li>
+                </ul>
+            </nav>
+            <div class="acciones-cabecera">
+                <a href="signup.html" class="boton boton-secundario">Registrarse</a>
+                <a href="login.html" class="boton">Iniciar Sesión</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+
+        <div class="contenedor-reglas">
+            <h1>Reglas de negocio</h1>
+            <p class="introduccion">Definiciones fundamentales para el uso y la gestión de la aplicación de listas de
+                compras Apunta-todo.</p>
+
+            <h2>Registro de usuario</h2>
+            <ul class="lista-reglas">
+                <li>
+                    El usuario deberá registrarse en la plataforma proporcionando un correo electrónico válido y una
+                    contraseña segura.
+                    <p class="descripcion">
+                        Esto garantiza la autenticidad y seguridad de la cuenta del usuario.
+                    </p>
+                </li>
+                <li>
+                    En caso de olvido de la contraseña, el usuario podrá utilizar la función de <b>Recuperar
+                        Contraseña</b> proporcionando su correo electrónico registrado.
+                    <p class="descripcion">
+                        Se enviará un enlace de restablecimiento de contraseña al correo electrónico del usuario.
+                    </p>
+                </li>
+
+            </ul>
+
+            <h2>Inicio de sesión</h2>
+            <ul class="lista-reglas">
+                <li>
+                    El usuario deberá iniciar sesión utilizando su correo electrónico y contraseña registrados.
+                    <p class="descripcion">
+                        Esto permite el acceso seguro a las funcionalidades personalizadas de la aplicación.
+                    </p>
+                </li>
+                <li>
+                    Si el usuario ingresa credenciales incorrectas, se mostrará un mensaje de error indicando que el
+                    correo electrónico o la contraseña son inválidos.
+                    <p class="descripcion">
+                        Esto ayuda a mantener la seguridad de la cuenta y evita accesos no autorizados.
+                    </p>
+                </li>
+            </ul>
+
+            <h2>Gestión de listas y productos</h2>
+            <ul class="lista-reglas">
+                <li>
+                    El usuario, tras iniciar sesión, tendrá acceso a un menú de opciones para la gestión de sus listas
+                    de mercado.
+                    <div class="descripcion">
+                        Las acciones disponibles incluyen: crear, nombrar, editar y eliminar listas de
+                        mercado personales.
+                    </div>
+                </li>
+                <li>
+                    Al utilizar la opción de Crear Lista, el usuario podrá ingresar el nombre de un producto y
+                    deberá seleccionar su categoría correspondiente (ej. Lácteos, Carnes, Granos).
+                    <div class="descripcion">
+                        La selección de categoría facilita la organización y la experiencia de compra.
+                    </div>
+                </li>
+            </ul>
+
+            <h2>Historial y reutilización de compras</h2>
+            <ul class="lista-reglas">
+                <li>
+                    Se mantendrá un Historial de Compras que el usuario podrá utilizar para dos propósitos
+                    principales: reutilizar listas de mercado anteriores y verificar compras pasadas.
+                    <div class="descripcion">
+                        Esta funcionalidad optimiza el tiempo y facilita la planificación de futuras compras.
+                    </div>
+                </li>
+            </ul>
+
+            <h2>Usuarios y seguridad de la información</h2>
+            <ul class="lista-reglas">
+                <li>
+                    Se establecerá un sistema de Roles de Usuario para diferenciar los niveles de acceso y permisos
+                    dentro de la aplicación.
+                    <div class="descripcion">
+                        Esto asegura la integridad de los datos y la funcionalidad específica para cada tipo de usuario.
+                    </div>
+                </li>
+                <li>
+                    El uso de datos personales (nombre y correo electrónico) se limitará estrictamente a la gestión y
+                    operación de la cuenta del usuario.
+                    <div class="descripcion">
+                        Estos datos no serán compartidos ni utilizados para fines no relacionados con la funcionalidad
+                        de la aplicación.
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="contenedor-reglas">
+            <h1>Modelo Entidad Relación</h1>
+            <p class="introduccion">Definicion de nuestras entidades y relaciones para Apunta-todo.</p>
+            <img class="imagen-erd" src="../images/erd.png" alt="Diagrama ERD de Apunta-todo">
+        </div>
+
+        <div class="contenedor-reglas">
+            <h1>Script Base de Datos</h1>
+            <p class="introduccion">Script para la creación de la base de datos, tablas y consultas básicas.</p>
+            <ul class="lista-reglas">
+                <li>
+                    Crear la base de datos apunta todo
+                    <pre><code>
+    CREATE DATABASE bd_apunta_todo;
+                    </code></pre>
+                </li>
+
+                <li>
+                    Usar la base de datos apunta todo
+                    <pre><code>
+    USE bd_apunta_todo;
+                    </code></pre>
+                </li>
+
+                <li>
+                    Crear la tabla de roles
+                    <pre><code>
+    CREATE TABLE tbl_roles (
+        id_rol INT IDENTITY(1,1) PRIMARY KEY,
+        nombre VARCHAR(50) NOT NULL UNIQUE,
+        descripcion VARCHAR(100)
+    );
+                    </code></pre>
+                </li>
+
+                <li>
+                    Crear la tabla de usuarios
+                    <pre><code>
+    CREATE TABLE tbl_usuarios (
+        id_usuario INT IDENTITY(1,1) PRIMARY KEY,
+        id_rol INT NOT NULL,
+        nombre VARCHAR(100) NOT NULL,
+        apellido VARCHAR(100) NOT NULL,
+        telefono VARCHAR(12) NOT NULL,
+        email VARCHAR(100) NOT NULL UNIQUE,
+        contraseña VARCHAR(10) NOT NULL,
+        
+        CONSTRAINT fk_usuarios_rol
+        FOREIGN KEY (id_rol)
+        REFERENCES tbl_roles(id_rol)
+    );
+                    </code></pre>
+                </li>
+
+                <li>
+                    Crear la tabla de categorias
+                    <pre><code>
+    CREATE TABLE tbl_categorias (
+        id_categoria INT IDENTITY(1,1) PRIMARY KEY,
+        nombre VARCHAR(100) NOT NULL,
+        descripcion VARCHAR(100)
+    );
+                    </code></pre>
+                </li>
+
+                <li>
+                    Crear la tabla de productos
+                    <pre><code>
+    CREATE TABLE tbl_productos (
+        id_producto INT IDENTITY(1,1) PRIMARY KEY,
+        nombre VARCHAR(100) NOT NULL,
+        unidad_de_medida VARCHAR(50) NOT NULL,
+        id_categoria INT NOT NULL,
+        
+        CONSTRAINT fk_productos_categoria
+        FOREIGN KEY (id_categoria)
+        REFERENCES tbl_categorias(id_categoria)
+    );
+                    </code></pre>
+                </li>
+
+                <li>
+                    Crear la tabla de las listas de compras
+                    <pre><code>
+    CREATE TABLE tbl_listas (
+        id_lista INT IDENTITY(1,1) PRIMARY KEY,
+        id_usuario INT NOT NULL,
+        nombre VARCHAR(150) NOT NULL,
+        fecha_crecion DATE NOT NULL,
+        
+        CONSTRAINT fk_listas_usuario
+        FOREIGN KEY (id_usuario)
+        REFERENCES tbl_usuarios(id_usuario)
+    );   
+                    </code></pre>
+                </li>
+
+                <li>
+                    Crear los elementos de la lista (El detalle)
+                    <pre><code>
+    CREATE TABLE tbl_items (
+        id_item INT IDENTITY(1,1) PRIMARY KEY,
+        id_lista INT NOT NULL,
+        id_producto INT NOT NULL,
+        cantidad DECIMAL(10,2) NOT NULL,
+        
+        CONSTRAINT fk_items_lista
+        FOREIGN KEY (id_lista)
+        REFERENCES tbl_listas(id_lista),
+        
+        CONSTRAINT fk_items_producto
+        FOREIGN KEY (id_producto)
+        REFERENCES tbl_productos(id_producto)
+    );   
+                    </code></pre>
+                </li>
+
+                <li>
+                    Insertar roles
+                    <pre><code>
+    INSERT INTO tbl_roles (nombre, descripcion) VALUES
+    ('Administrador', 'El que gestiona a los demas usuarios'),
+    ('Usuario', 'Los clientes o usuarios que van a crear sus listas de compra');   
+                    </code></pre>
+                </li>
+
+                <li>
+                    Insertar usuarios
+                    <pre><code>
+    INSERT INTO tbl_usuarios (id_rol, nombre, apellido, telefono, email, contraseña) VALUES
+    (1, 'Larysa', 'Guerra', '+57876543456', 'larysa.guerra@correo.com', '12345678'),
+    (1, 'Luz', 'Guisao', '+57320756984', 'luz.guisao@correo.com', '12345678'),
+    (1, 'Yetty', 'Sanz', '+57876321526', 'yetty.sanz@correo.com',  '12345678'),
+    (2, 'Laura', 'Martínez', '3004567890', 'laura.martinez@correo.com', 'pass1234'),
+    (2, 'Carlos', 'Gómez', '3012345678', 'carlos.gomez@correo.com', 'abc12345'),
+    (2, 'Valentina', 'Hernández', '3029876543', 'valentina.hernandez@correo.com', 'clave2025'),
+    (2, 'Andrés', 'Ramírez', '3041239876', 'andres.ramirez@correo.com', 'qwerty12'),
+    (2, 'Daniela', 'Suárez', '3053217890', 'daniela.suarez@correo.com', 'dan2024ab'),
+    (2, 'Javier', 'Cárdenas', '3107654321', 'javier.cardenas@correo.com', 'secure01'),
+    (2, 'Mariana', 'Castillo', '3119988776', 'mariana.castillo@correo.com', 'mari2025');   
+                    </code></pre>
+                </li>
+
+                <li>
+                    Insertar las categorias de los productos
+                    <pre><code>
+    INSERT INTO tbl_categorias (nombre, descripcion) VALUES
+    ('Frutas', 'Productos frescos de origen vegetal, consumidos normalmente como alimentos dulces o saludables.'),
+    ('Verduras', 'Hortalizas y vegetales utilizados en preparaciones diarias como ensaladas, sopas y guarniciones.'),
+    ('Carnes', 'Productos de origen animal ricos en proteína como res, cerdo, pollo y pescado.'),
+    ('Lácteos', 'Productos derivados de la leche como queso, yogurt, mantequilla y crema.'),
+    ('Aseo', 'Productos utilizados para la limpieza personal y del hogar.'),
+    ('Granos', 'Alimentos secos como arroz, lentejas, fríjoles, garbanzos y otros no perecederos.'),
+    ('Panadería', 'Productos elaborados con harina como pan, tortas, galletas, hojaldres y bollería.'),
+    ('Bebidas', 'Líquidos de consumo como jugos, gaseosas, agua, café, té y bebidas energéticas.'),
+    ('Snacks', 'Alimentos listos para consumir como papas fritas, galletas, frutos secos y pasabocas.'),
+    ('Congelados', 'Alimentos preservados mediante congelación, como verduras, carnes, pizzas y comidas listas.');
+                    </code></pre>
+                </li>
+
+                <li>
+                    Insertar los productos con su categoria
+                    <pre><code>
+    INSERT INTO tbl_productos (nombre, unidad_de_medida, id_categoria) VALUES
+    ('Banano', 'kg', 1),
+    ('Lechuga crespa', 'unidad', 2),
+    ('Carne molida', 'kg', 3),
+    ('Queso mozzarella', 'kg', 4),
+    ('Detergente líquido', 'litro', 5),
+    ('Lentejas', 'kg', 6),
+    ('Pan integral', 'unidad', 7),
+    ('Jugo de naranja', 'litro', 8),
+    ('Maní salado', 'paquete', 9),
+    ('Vegetales congelados', 'paquete', 10);
+                    </code></pre>
+                </li>
+
+                <li>
+                    Insertar la lista de compra
+                    <pre><code>
+    INSERT INTO tbl_listas(id_usuario, nombre, fecha_crecion) VALUES
+    (5, 'Compras semana 1 (Laura)', '2025-10-10'),
+    (5, 'Compras semana 2 (Laura)', '2025-11-17'),
+    (6, 'Compras semana 1 (Carlos)', '2025-08-06'),
+    (6, 'Compras semana 2 (Carlos)', '2025-09-20'),
+    (7, 'Compras semana 1 (Valentina)', '2025-10-15'),
+    (7, 'Compras semana 2 (Valentina)', '2025-11-27'),
+    (8, 'Compras semana 1 (Andrés)', '2025-04-11'),
+    (8, 'Compras semana 2 (Andrés)', '2025-06-02'),
+    (9, 'Compras semana 1 (Daniela)', '2025-08-15'),
+    (9, 'Compras semana 2 (Daniela)', '2025-09-19'),
+    (10, 'Compras semana 1 (Javier)', '2025-10-11'),
+    (10, 'Compras semana 2 (Javier)', '2025-11-19'),
+    (11, 'Compras semana 1 (Mariana)', '2025-02-05'),
+    (11, 'Compras semana 2 (Mariana)', '2025-06-04');    
+                    </code></pre>
+                </li>
+
+                <li>
+                    Insertar el detalle de la lista 1
+                    <pre><code>
+    INSERT INTO tbl_items (id_lista, id_producto, cantidad) VALUES
+    (1, 1, 2.0),
+    (1, 2, 1.0),
+    (1, 7, 1.0),
+    (1, 8, 1.0);
+                    </code></pre>
+                </li>
+
+                <li>
+                    Insertar el detalle de la lista 2
+                    <pre><code>
+    INSERT INTO tbl_items (id_lista, id_producto, cantidad) VALUES
+    (2, 3, 1.5),
+    (2, 4, 0.5),
+    (2, 9, 1.0),
+    (2, 5, 1.0);    
+                    </code></pre>
+                </li>
+
+                <li>
+                    Insertar el detalle de la lista 3
+                    <pre><code>
+    INSERT INTO tbl_items (id_lista, id_producto, cantidad) VALUES
+    (3, 2, 1.0),
+    (3, 6, 1.0),
+    (3, 1, 2.0),
+    (3, 10, 1.0);   
+                    </code></pre>
+                </li>
+
+                <li>
+                    Insertar el detalle de la lista 4
+                    <pre><code>
+    INSERT INTO tbl_items (id_lista, id_producto, cantidad) VALUES
+    (4, 7, 1.0),
+    (4, 3, 1.0),
+    (4, 8, 2.0),
+    (4, 9, 1.0);  
+                    </code></pre>
+                </li>
+
+                <li>
+                    Insertar el detalle de la lista 5
+                    <pre><code>
+    INSERT INTO tbl_items (id_lista, id_producto, cantidad) VALUES
+    (5, 1, 1.5),
+    (5, 4, 0.5),
+    (5, 2, 1.0),
+    (5, 7, 1.0);        
+                    </code></pre>
+                </li>
+
+                <li>
+                    Insertar el detalle de la lista 6
+                    <pre><code>
+    INSERT INTO tbl_items (id_lista, id_producto, cantidad) VALUES
+    (6, 6, 1.0),
+    (6, 10, 1.0),
+    (6, 3, 1.0),
+    (6, 9, 2.0);    
+                    </code></pre>
+                </li>
+
+                <li>
+                    Consultas generales
+                    <pre><code>
+    -- Leer roles
+    SELECT * FROM tbl_roles;
+    -- Leer usuarios
+    SELECT * FROM tbl_usuarios;
+    -- Leer categorias
+    SELECT * FROM tbl_categorias;
+    -- Leer productos
+    SELECT * FROM tbl_productos;
+    -- Leer listas
+    SELECT * FROM tbl_listas;
+    -- Leer detalle de las listas
+    SELECT * FROM tbl_items;
+    -- Leer las listas, buscando por el id de usuario
+    SELECT * FROM tbl_listas WHERE tbl_listas.id_usuario = 5;
+
+    -- Funciones de agregado
+    -- (SUM) Sumar la cantidad de productos que hay en una lista 
+    SELECT SUM(cantidad) AS cantida_productos FROM tbl_items WHERE id_lista = 1;
+
+    -- (COUNT) Contar cuantos productos ha agregado por id de la lista
+    SELECT COUNT(*) AS total_productos FROM tbl_items WHERE id_lista = 5;
+
+    -- (MIN) Menor cantidad un producto en cualquier lista.
+    SELECT MIN(cantidad) AS cantidad_minima FROM tbl_items;
+
+    -- (MAX) Mayor cantidad un producto en cualquier lista.
+    SELECT MAX(cantidad) AS cantidad_maxima FROM tbl_items;
+
+    -- JOIN
+    -- Unir los items de una lista con los nombres de producto, buscando por el id de la lista
+    SELECT 
+        tbl_productos.nombre AS producto,
+        tbl_items.cantidad,
+        tbl_productos.unidad_de_medida AS unidad
+    FROM tbl_items
+    INNER JOIN tbl_productos
+        ON tbl_items.id_producto = tbl_productos.id_producto
+    WHERE tbl_items.id_lista = 1;
+
+    -- Agrupar y contar cuantas listas a creado cada usuario
+    SELECT 
+        tbl_usuarios.nombre + ' ' + tbl_usuarios.apellido AS nombre,
+        COUNT(tbl_listas.id_lista) AS total_listas
+    FROM tbl_usuarios
+    LEFT JOIN tbl_listas
+        ON tbl_usuarios.id_usuario = tbl_listas.id_usuario
+    GROUP BY tbl_usuarios.id_usuario, tbl_usuarios.nombre, tbl_usuarios.apellido;
+                    </code></pre>
+                </li>
+            </ul>
+        </div>
+
+    </main>
+
+    <footer>
+        <div class="pie">
+            <a href="#" class="logotipo">
+                <img src="../images/logo_apunta_todo_con_nombre_gris.png" alt="Logo Apunta_todo">
+            </a>
+            <div class="redes">
+                <img src="../images/icon_facebook.png" alt="icono facebook">
+                <a href="https://www.facebook.com/" target="_blank">@facebook</a>
+                <img src="../images/icon_whatsapp.png" alt="icono whatsapp">
+                <a href="https://www.whatsapp.com/" target="_blank">@whatsapp</a>
+                <img src="../images/icon_instagram.png" alt="icono instagram">
+                <a href="https://www.instagram.com/" target="_blank">@instagram</a>
+            </div>
+        </div>
+        <p class="derechos">Copyright ©️ 2025. Apunta ToDo. Todos los derechos reservados.</p>
+        <p class="derechos">Proyecto Integrador - Cesde 2025</p>
+    </footer>
+</body>
+
+</html>

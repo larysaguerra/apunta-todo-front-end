@@ -1,0 +1,190 @@
+:root {
+    --color-principal: #004d40;
+    --color-acento: #a7ffeb;
+    --color-fondo: #f4f4f4;
+    --color-texto: #333;
+    --color-claro: #fff;
+    --borde-gris: #ccc;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-family: "Roboto", sans-serif;
+    color: var(--color-texto);
+    background-color: var(--color-fondo);
+}
+
+a {
+    text-decoration: none;
+    color: var(--color-principal);
+}
+
+ul {
+    list-style: none;
+}
+
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: var(--color-principal);
+}
+
+header {
+    padding: 10px;
+    background-color: var(--color-claro);
+    border-bottom: 1px solid var(--borde-gris);
+}
+
+footer {
+    background: var(--color-principal);
+    color: var(--color-claro);
+    text-align: center;
+    padding: 15px 25px 15px 25px;
+    border-top: 1px solid var(--borde-gris);
+}
+
+.cabecera {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.logotipo img {
+    height: 80px;
+}
+
+.image-perfil-cabecera {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    border: 3px solid var(--color-claro);
+}
+
+.navegacion-principal {
+    padding: 10px 20px;
+}
+
+.navegacion-principal ul {
+    display: flex;
+}
+
+.navegacion-principal ul li {
+    margin-left: 20px;
+}
+
+.navegacion-principal ul li a {
+    color: var(--color-texto);
+    font-weight: 400;
+    font-size: 1.125rem;
+    transition: color 0.3s;
+}
+
+.navegacion-principal ul li a:hover {
+    color: var(--color-principal);
+}
+
+.acciones-cabecera {
+    display: flex;
+    gap: 15px;
+}
+
+.contenedor {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+.boton {
+    display: inline-block;
+    background: var(--color-principal);
+    color: var(--color-claro);
+    padding: 10px 20px;
+    border-radius: 4px;
+    transition: 0.3s;
+    font-weight: 400;
+    border: 1px solid var(--color-principal);
+}
+
+.boton:hover {
+    background: #00796b;
+}
+
+.boton-secundario {
+    background: transparent;
+    color: var(--color-principal);
+}
+
+.boton-secundario:hover {
+    background: var(--color-principal);
+    color: var(--color-claro);
+}
+
+.pie {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+}
+
+.pie .logotipo img {
+    height: 60px;
+}
+
+.redes {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.redes a {
+    color: var(--color-acento);
+    margin: 10px;
+    font-size: 0.85rem;
+    transition: color 0.3s;
+}
+
+.redes a:hover {
+    color: var(--color-claro);
+}
+
+.redes img {
+    height: 25px;
+}
+
+.derechos {
+    margin-top: 5px;
+    font-size: 0.85rem;
+}
+
+@media (max-width: 768px) {
+    .cabecera {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .navegacion-principal ul {
+        justify-content: center;
+    }
+
+    .seccion-principal {
+        padding: 60px 0;
+    }
+
+    .texto-hero h2 {
+        font-size: 2.2rem;
+    }
+
+    .pie {
+        flex-direction: column;
+        gap: 10px;
+    }
+}

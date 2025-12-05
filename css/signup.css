@@ -1,0 +1,44 @@
+:root {
+    --color-principal: #004d40;
+    --color-acento: #a7ffeb;
+    --color-fondo: #f4f4f4;
+    --color-texto: #333;
+    --color-claro: #fff;
+    --borde-gris: #ccc;
+}
+
+.form-container {
+    background-color: var(--color-claro);
+     margin: 50px auto;
+    padding: 30px;
+    width: 360px;
+    border-radius: 7px;
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 25px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 14px;
+    color: #444;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 18px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+input:focus {
+    border-color: #777;
+    outline: none;
+}

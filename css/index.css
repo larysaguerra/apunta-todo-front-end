@@ -1,0 +1,75 @@
+:root {
+    --color-principal: #004d40;
+    --color-acento: #a7ffeb;
+    --color-fondo: #f4f4f4;
+    --color-texto: #333;
+    --color-claro: #fff;
+    --borde-gris: #ccc;
+}
+
+section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.contenedor-imagen {
+    min-height: 90vh;
+    background: url('../images/fondo_inicio.jpg') no-repeat center center/cover;
+    color: var(--color-claro);
+    text-align: center;
+}
+
+.contenedor-registro {
+    padding: 40px 20px;
+    text-align: center;
+    margin: 50px 0;
+}
+
+.contenedor-imagen h1, .contenedor-imagen h2 {
+    margin-bottom: 10px;
+    color: var(--color-claro);
+    text-shadow: 2px 2px 4px var(--color-texto);
+}
+
+.contenedor-nosotros {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin: 30px;
+}
+
+.tarjeta {
+    background: var(--color-claro);
+    border: 1px solid var(--borde-gris);
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.tarjeta img {
+    max-width: 100%;
+    border-radius:8px 8px 0px 0px;
+    margin-bottom: 15px;
+}
+
+.tarjeta div {
+    padding: 15px;
+}
+
+.tarjeta:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.tarjeta h3 {
+    margin-bottom: 10px;
+    color: var(--color-principal);
+}
+
+.tarjeta p {
+    color: var(--color-texto);
+    line-height: 1.5;
+}

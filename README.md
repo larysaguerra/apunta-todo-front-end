@@ -1,20 +1,38 @@
-Tareas del Proyecto (App de Compras Familiar)
-1. Elegir los colores de la app: Decidir una paleta de colores sencilla.
+# Apunta ToDo – La aplicación número uno para tu hogar
 
-2. Diseñar el logo de la app: Crear una imagen simple como un carrito.
+**Apunta ToDo** es una herramienta diseñada para ayudarte a organizar mejor los productos de tu hogar y gestionar tus compras de manera más práctica, rápida y eficiente.  
+Este proyecto fue desarrollado como parte del *Proyecto Integrador del 1er semestre* del **Técnico Laboral como Asistente en Desarrollo de Software – CESDE**.
 
-3. Poder tachar los productos: Crear un botón para tachar lo comprado.
+---
 
-4. Poner una opción de "Favoritos": Lista pequeña de cosas que siempre se compran.
+## Características principales
 
-5. Saber quién agregó cada cosa: Un campo de texto para poner el nombre de quien pide.
+### 📝 Listas Rápidas
+Crea listas en segundos. La aplicación prioriza la velocidad para que no pierdas tiempo planificando.
 
-6. Hacer botones grandes y claros: Para que sea fácil de usar en el celular.
+### 🛒 Recorrido Eficiente
+Organiza tus artículos por categorías como **Lácteos, Abarrotes, Carnes, Verduras, Aseo**, entre otras, para un recorrido de compra más ordenado y sin retrocesos.
 
-7. Notificaciones visuales de "Ya lo compré": Cambios de color cuando la lista cambie.
+### 🔄 Siempre Sincronizada
+Tu lista siempre disponible en tu móvil, sin necesidad de papeles ni capturas de pantalla.
 
-8. Botón de "Limpiar Lista": Para borrar todo de un solo golpe.
+---
 
-9. Organizar por categorías básicas: Comida, Aseo y Varios.
+## Tecnologías utilizadas
 
-10. Pantalla de bienvenida: Una pantalla que diga "Bienvenida Familia".
+- **HTML**
+- **CSS**
+
+---
+
+## 🎓 Proyecto académico
+
+Desarrollado como parte del **Proyecto Integrador** del **primer semestre** del programa:
+
+📚 *Técnico Laboral como Asistente en Desarrollo de Software – CESDE*
+
+---
+
+## 📄 Licencia
+
+Proyecto académico. Puedes usarlo como referencia educativa.

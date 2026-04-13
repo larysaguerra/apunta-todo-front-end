@@ -40,13 +40,13 @@
             <h2>Iniciar Sesión</h2>
 
             <form>
-                <label for="correo">Correo electrónico</label>
+                <label for="correo">Correo electrónico o nombre de usuario</label>
                 <input type="email" id="correo" name="correo" required>
 
                 <label for="contrasena">Contraseña</label>
                 <input type="password" id="contrasena" name="contrasena" required>
 
-                <a href="list.html" class="boton">Iniciar Sesión</search></a>
+                <input type="button" value="Iniciar Sesión" class="boton" onclick="login()">
 
             </form>
         </div>
@@ -70,6 +70,7 @@
         <p class="derechos">Proyecto Integrador - Cesde 2025</p>
     </footer>
 
+    <script src="../js/login.js"></script>
 </body>
 
 </html>

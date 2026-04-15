@@ -1,5 +1,11 @@
 // Generar fucnion para iniciar sesion solo con el correo y contraseña
-function login() {
+
+const boton = document.getElementById("btnLogin");
+
+boton.addEventListener("click", function () {
+
+     // Obtener los usuarios existentes del localStorage o inicializar un array vacío
+    let usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
 
     // Obtener los valores del correo y contraseña
     var correo = document.getElementById("correo").value;
@@ -16,11 +22,27 @@ function login() {
         alert("Por favor, ingrese su contraseña");
         return;
     }
-    
+
+    // Validar el correo o nombre de usuario existe
+    var usuarioEncontrado = usuarios.find(function(usuario) {
+        return usuario.correo === correo || usuario.nombreUsuario === correo;
+    });
+
+    if (!usuarioEncontrado) {
+        alert("Correo o nombre de usuario no encontrado");
+        return;
+    }
+
+    // Validar la contraseña
+    if (usuarioEncontrado.password !== contrasena) {
+        alert("Contraseña incorrecta");
+        return;
+    }
+
     // Simular una autenticación exitosa
     alert("Inicio de sesión exitoso");
 
     // Redirigir al usuario a la página de lista de tareas
     window.location.href = "list.html";
 
-}
+});

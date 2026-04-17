@@ -187,4 +187,11 @@ footer {
         flex-direction: column;
         gap: 10px;
     }
+
+    .recuperar {
+    cursor: pointer;
+    color: blue;
+    margin-top: 10px;
+    text-align: center;
+}
 }

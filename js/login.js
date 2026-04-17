@@ -46,3 +46,9 @@ boton.addEventListener("click", function () {
     window.location.href = "list.html";
 
 });
+
+const recuperar = document.getElementById("recuperarUsuario");
+
+recuperar.addEventListener("click", function () {
+    alert("Se ha enviado su usuario al correo registrado (simulación)");
+});

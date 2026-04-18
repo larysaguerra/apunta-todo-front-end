@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Apuntado ToDo</title>
     <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="../css/list.css">
+    <link rel="stylesheet" href="list.css">
     <link rel="shortcut icon" href="../images/fav_icon_apunta_todo.png" type="image/x-icon">
     <link
         href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100..700;1,100..700&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
@@ -17,12 +17,19 @@
 
     <header>
         <div class="cabecera cabecera-login">
-            <a href="../html/index.html" class="logotipo">
+            <a href="../index/index.html" class="logotipo">
                 <img src="../images/logo_apunta_todo_con_nombre.png" alt="Logo Apunta_todo">
             </a>
-
+            <nav class="navegacion-principal">
+                <ul>
+                    <li></li>
+                </ul>
+            </nav>
             <div class="user-area">
-                <span class="icon">👤</span>
+                <a href="../profile/profile.html">
+                    <p>User Name</p>
+                </a>
+                <a href="../profile/profile.html"><span class="icon">👤</span></a>
             </div>
         </div>
     </header>
@@ -146,7 +153,7 @@
                 </div>
             </div>
 
-           <div class="card">
+            <div class="card">
                 <div class="card-header">
                     <h3>Compras para la sopita</h3>
                 </div>
@@ -200,6 +207,7 @@
         <p class="derechos">Proyecto Integrador - Cesde 2025</p>
     </footer>
 
+    <script src="list.js"></script>
 </body>
 
 </html>

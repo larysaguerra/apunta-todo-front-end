@@ -1,5 +1,5 @@
 
-import { Usuario } from "./usuario.js";
+import { Usuario } from "../models/usuario.js";
 
 const boton = document.getElementById("btnRegistro");
 

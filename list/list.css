@@ -14,12 +14,15 @@
 }
 
 .user-area {
+    display: flex;
+    align-items: center;
+    padding: 20px;
     margin-left: auto;
 }
 
 .icon {
-    font-size: 20px;
-    margin-left: 15px;
+    font-size: 24px;
+    margin-left: 20px;
     cursor: pointer;
 }
 

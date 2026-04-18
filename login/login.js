@@ -42,7 +42,10 @@ boton.addEventListener("click", function () {
     // Simular una autenticación exitosa
     alert("Inicio de sesión exitoso");
 
+    // Guardar el usuario autenticado en el localStorage
+    localStorage.setItem("nombreUsuarioActual", JSON.stringify(usuarioEncontrado.nombreUsuario));
+
     // Redirigir al usuario a la página de lista de tareas
-    window.location.href = "list.html";
+    window.location.href = "../list/list.html";
 
 });

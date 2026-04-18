@@ -1,5 +1,5 @@
 export class Usuario {
-    constructor(nombre,apellido, correo, telefono, nombreUsuario, password) {
+    constructor(nombre, apellido, correo, telefono, nombreUsuario, password) {
         this.id = Date.now();
         this.nombre = nombre;
         this.apellido = apellido;

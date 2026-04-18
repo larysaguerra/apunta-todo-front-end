@@ -12,12 +12,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const usuarioInfo = usuariosRegistrados.find(usuario => usuario.nombreUsuario === nombreUsuarioActual);
 
     if (usuarioInfo) {
-        document.getElementById('nombreUsuario').textContent = usuarioInfo.nombreUsuario;
-        document.getElementById('nombre').textContent = `Nombre: ${usuarioInfo.nombre}`;
-        document.getElementById('apellido').textContent = `Apellido: ${usuarioInfo.apellido}`;
-        document.getElementById('correo').textContent = `Correo: ${usuarioInfo.correo}`;
-        document.getElementById('telefono').textContent = `Teléfono: ${usuarioInfo.telefono}`;
-        document.getElementById('password').textContent = `Contraseña: ${'*'.repeat(usuarioInfo.password.length)}`;
+        document.getElementById('nombreUsuario').value = usuarioInfo.nombreUsuario;
+        document.getElementById('nombre').value = usuarioInfo.nombre;
+        document.getElementById('apellido').value = usuarioInfo.apellido;
+        document.getElementById('correo').value = usuarioInfo.correo;
+        document.getElementById('telefono').value = usuarioInfo.telefono;
     }
 
 });

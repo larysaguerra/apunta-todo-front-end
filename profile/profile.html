@@ -35,16 +35,34 @@
 
     <main>
 
-        <img src="../images/user_profile_placeholder.png" alt="Foto de perfil" class="profile-picture">
+        <div class="form-container">
+            <form>
+                <h2>Información Personal</h2>
+                <label>Nombre</label>
+                <input type="text" value="" id="nombre" />
+                <label>Apellido</label>
+                <input type="text" value="" id="apellido" />
+                <label>Nombre de Usuario</label>
+                <input class="input-with-prefix" type="text" value="" id="nombreUsuario" />
+                <label>Correo Electrónico</label>
+                <input type="email" value="" id="correo" />
+                <label>Teléfono</label>
+                <input type="tel" value="" id="telefono" />
         
-        <h2 id="nombreUsuario">Nombre de Usuario</h2>
-        <p id="nombre">Nombre: John Doe</p>
-        <p id="apellido">Apellido: Smith</p>
-        <p id="correo">Correo: user@example.com</p>
-        <p id="telefono">Teléfono: 123-456-7890</p>
-        <p id="password">Contraseña: ********</p>
+                <h2>Seguridad</h2>
+                <label>Contraseña actual</label>
+                <input placeholder="••••••••••••" type="password" />
+                <label>Nueva contraseña</label>
+                <input type="password" />
+                <label>Confirmar nueva contraseña</label>
+                <input type="password" />
+            </form>
 
-        <input type="button" class="edit-profile-btn" value="Editar Perfil">
+            <input type="button" value="Guardar cambios" id="btnGuardar" class="boton">
+            <input type="button" value="Cancelar" id="btnCancelar" class="boton boton-secundario">
+            <input type="button" value="Cerrar sesión" id="btnCerrarSesion" class="boton boton-secundario">
+
+        </div>
 
     </main>
 

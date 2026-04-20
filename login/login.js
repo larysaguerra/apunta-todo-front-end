@@ -1,22 +1,26 @@
 // Generar fucnion para iniciar sesion solo con el correo y contraseña
-
+console.log("Iniciando sesión...");
 const boton = document.getElementById("btnLogin");
+
+console.log(boton);
 
 boton.addEventListener("click", function () {
 
-     // Obtener los usuarios existentes del localStorage o inicializar un array vacío
+    console.log("Botón de inicio de sesión clickeado");
+
+    // Obtener los usuarios existentes del localStorage o inicializar un array vacío
     let usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
 
     // Obtener los valores del correo y contraseña
     var correo = document.getElementById("correo").value;
     var contrasena = document.getElementById("contrasena").value;
-    
+
     // Validar que el correo o nombre de usuario no esté vacío
     if (correo === "") {
         alert("Por favor, ingrese su correo o nombre de usuario");
         return;
     }
-    
+
     // Validar que la contraseña no estén vacíos
     if (contrasena === "") {
         alert("Por favor, ingrese su contraseña");
@@ -24,7 +28,7 @@ boton.addEventListener("click", function () {
     }
 
     // Validar el correo o nombre de usuario existe
-    var usuarioEncontrado = usuarios.find(function(usuario) {
+    var usuarioEncontrado = usuarios.find(function (usuario) {
         return usuario.correo === correo || usuario.nombreUsuario === correo;
     });
 
@@ -38,7 +42,6 @@ boton.addEventListener("click", function () {
         alert("Contraseña incorrecta");
         return;
     }
-
     // Simular una autenticación exitosa
     alert("Inicio de sesión exitoso");
 
@@ -48,11 +51,18 @@ boton.addEventListener("click", function () {
     // Redirigir al usuario a la página de lista de tareas
     window.location.href = "../list/list.html";
 
-    // RECUPERAR USUARIO
+});
+
+// RECUPERAR USUARIO
+
 const recuperar = document.getElementById("recuperarUsuario");
+
+console.log(recuperar);
 
 if (recuperar) {
     recuperar.addEventListener("click", function () {
+
+        console.log("Recuperar usuario");
 
         let usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
 
@@ -66,13 +76,10 @@ if (recuperar) {
         let usuarioEncontrado = usuarios.find(u => u.correo === correo);
 
         if (usuarioEncontrado) {
-            alert("Tu usuario es: " + usuarioEncontrado.nombreUsuario);
+            alert("Tu usuario es: " + usuarioEncontrado.nombreUsuario + "\nTu contraseña es: " + usuarioEncontrado.password);
         } else {
             alert("Usuario no encontrado");
         }
 
     });
 }
-
-});
-

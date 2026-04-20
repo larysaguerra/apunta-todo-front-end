@@ -1,5 +1,4 @@
 // Generar fucnion para iniciar sesion solo con el correo y contraseña
-console.log("LOGIN.JS CARGADO");
 
 const boton = document.getElementById("btnLogin");
 

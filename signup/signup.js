@@ -53,6 +53,6 @@ boton.addEventListener("click", function () {
     console.log(usuarios);
 
     // Ir a la página de inicio de sesión después de un breve retraso
-    window.location.href = "login.html";
+    window.location.href = "../login/login.html";
 
 });

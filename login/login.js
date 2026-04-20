@@ -1,8 +1,12 @@
 // Generar fucnion para iniciar sesion solo con el correo y contraseña
-
+console.log("Iniciando sesión...");
 const boton = document.getElementById("btnLogin");
 
+console.log(boton);
+
 boton.addEventListener("click", function () {
+
+    console.log("Botón de inicio de sesión clickeado");
 
      // Obtener los usuarios existentes del localStorage o inicializar un array vacío
     let usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
@@ -38,7 +42,6 @@ boton.addEventListener("click", function () {
         alert("Contraseña incorrecta");
         return;
     }
-
     // Simular una autenticación exitosa
     alert("Inicio de sesión exitoso");
 
@@ -49,10 +52,18 @@ boton.addEventListener("click", function () {
     window.location.href = "../list/list.html";
 
     // RECUPERAR USUARIO
+
+
+});
+
 const recuperar = document.getElementById("recuperarUsuario");
+
+console.log(recuperar);
 
 if (recuperar) {
     recuperar.addEventListener("click", function () {
+
+        console.log("Recuperar usuario");
 
         let usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
 
@@ -66,13 +77,10 @@ if (recuperar) {
         let usuarioEncontrado = usuarios.find(u => u.correo === correo);
 
         if (usuarioEncontrado) {
-            alert("Tu usuario es: " + usuarioEncontrado.nombreUsuario);
+            alert("Tu usuario es: " + usuarioEncontrado.nombreUsuario + " y tu contraseña es: " + usuarioEncontrado.password);
         } else {
             alert("Usuario no encontrado");
         }
 
     });
 }
-
-});
-

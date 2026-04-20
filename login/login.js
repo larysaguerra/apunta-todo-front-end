@@ -77,27 +77,3 @@ if (recuperar) {
 
 });
 
-const recuperar = document.getElementById("recuperarUsuario");
-
-recuperar.addEventListener("click", function () {
-
-    let usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
-
-    let correo = document.getElementById("correo").value.trim().toLowerCase();
-
-    if (correo === "") {
-        alert("Ingresa tu correo");
-        return;
-    }
-
-    let usuarioEncontrado = usuarios.find(u => 
-        u.correo.toLowerCase() === correo
-    );
-
-    if (usuarioEncontrado) {
-        alert("Tu usuario es: " + usuarioEncontrado.nombreUsuario);
-    } else {
-        alert("Usuario no encontrado");
-    }
-
-});

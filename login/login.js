@@ -1,4 +1,5 @@
 // Generar fucnion para iniciar sesion solo con el correo y contraseña
+console.log("LOGIN.JS CARGADO");
 
 const boton = document.getElementById("btnLogin");
 
@@ -47,5 +48,56 @@ boton.addEventListener("click", function () {
 
     // Redirigir al usuario a la página de lista de tareas
     window.location.href = "../list/list.html";
+
+    // RECUPERAR USUARIO
+const recuperar = document.getElementById("recuperarUsuario");
+
+if (recuperar) {
+    recuperar.addEventListener("click", function () {
+
+        let usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
+
+        let correo = document.getElementById("correo").value;
+
+        if (correo === "") {
+            alert("Ingresa tu correo para recuperar tu usuario");
+            return;
+        }
+
+        let usuarioEncontrado = usuarios.find(u => u.correo === correo);
+
+        if (usuarioEncontrado) {
+            alert("Tu usuario es: " + usuarioEncontrado.nombreUsuario);
+        } else {
+            alert("Usuario no encontrado");
+        }
+
+    });
+}
+
+});
+
+const recuperar = document.getElementById("recuperarUsuario");
+
+recuperar.addEventListener("click", function () {
+
+    let usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
+
+    let correo = document.getElementById("correo").value.trim().toLowerCase();
+
+    if (correo === "") {
+        alert("Ingresa tu correo");
+        return;
+    }
+
+    let usuarioEncontrado = usuarios.find(u => 
+        u.correo.toLowerCase() === correo
+    );
+
+    if (usuarioEncontrado) {
+        alert("Tu usuario es: " + usuarioEncontrado.nombreUsuario);
+    } else {
+        alert("Usuario no encontrado");
+    }
 
 });

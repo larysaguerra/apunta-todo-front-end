@@ -224,3 +224,14 @@ footer {
         gap: 10px;
     }
 }
+
+.recuperar {
+    margin-top: 10px;
+    color: blue;
+    cursor: pointer;
+    text-align: center;
+}
+
+.recuperar:hover {
+    text-decoration: underline;
+}

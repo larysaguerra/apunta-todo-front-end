@@ -52,18 +52,10 @@ boton.addEventListener("click", function () {
     window.location.href = "../list/list.html";
 
     // RECUPERAR USUARIO
-
-
-});
-
 const recuperar = document.getElementById("recuperarUsuario");
-
-console.log(recuperar);
 
 if (recuperar) {
     recuperar.addEventListener("click", function () {
-
-        console.log("Recuperar usuario");
 
         let usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
 
@@ -77,10 +69,13 @@ if (recuperar) {
         let usuarioEncontrado = usuarios.find(u => u.correo === correo);
 
         if (usuarioEncontrado) {
-            alert("Tu usuario es: " + usuarioEncontrado.nombreUsuario + " y tu contraseña es: " + usuarioEncontrado.password);
+            alert("Tu usuario es: " + usuarioEncontrado.nombreUsuario);
         } else {
             alert("Usuario no encontrado");
         }
 
     });
 }
+
+});
+

@@ -28,21 +28,33 @@
 
 main {
     padding: 30px;
+    min-height: 80vh;
 }
 
 .add-note {
     display: flex;
     justify-content: center;
-    margin-bottom: 30px;
+    margin-bottom: 10px;
 }
 
 .add-note input {
     width: 60%;
     padding: 15px;
-    border-radius: 25px;
+    border-radius: 8px;
     border: 1px solid var(--borde-gris);
     background-color: white;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.boton {
+    background-color: var(--color-principal);
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-left: 10px;
 }
 
 .section-title {
@@ -58,13 +70,12 @@ main {
     grid-template-rows: min-content;
 }
 
-
 .card h3 {
     margin-top: 0;
 }
 
 .card ul {
-    padding-left: 20px;
+    padding-left: 10px;
     margin-top: 10px;
 }
 
@@ -95,6 +106,7 @@ main {
 .card-actions {
     display: flex;
     justify-content: space-evenly;
+    align-items: center;
 }
 
 .card-actions button {
@@ -103,6 +115,7 @@ main {
     font-size: 1.2rem;
     cursor: pointer;
     margin-left: 6px;
+
 }
 
 .card-actions button:hover {
@@ -112,10 +125,35 @@ main {
 .card-caption {
     font-size: 0.75rem;
     color: var(--borde-gris);
-    margin: 5px 0 15px 0;
+    text-align: right;
+}
+
+.card-content {
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 .card-content p {
     margin: 8px 0;
     font-size: 0.95rem;
+}
+
+.card-content input[type="checkbox"] {
+    margin-bottom: 5px;
+    margin-right: 5px;
+}
+
+.dialog {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin: 0;
+    border: none;
+    border-radius: 8px;
+    padding: 20px;
+    background-color: var(--color-claro);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    width: 400px;
+    max-width: 90%;
 }

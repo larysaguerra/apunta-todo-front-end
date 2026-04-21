@@ -37,155 +37,36 @@
     <main>
 
         <div class="add-note">
-            <input type="text" placeholder="Crear una nueva lista...">
+            <input type="text" placeholder="Nombre de la lista..." id="inputTitulo">
+            <button id="btnAgregarLista" class="boton">Crear</button>
         </div>
 
-        <div class="cards-container">
+        <div class="cards-container" id="cards-container"></div>
 
-            <div class="card">
-
-                <div class="card-header">
-                    <h3>Ingredientes torta</h3>
-                </div>
-
-                <div class="card-content">
-                    <p><strong>Lácteos</strong></p>
-                    <ul>
-                        <li>Leche</li>
-                        <li>Mantequilla</li>
-                        <li>Crema de leche</li>
-                    </ul>
-                    <p><strong>Despensa</strong></p>
-                    <ul>
-                        <li>Harina de trigo</li>
-                        <li>Polvo para hornear</li>
-                        <li>Maicena</li>
-                    </ul>
-                    <p><strong>Frutas</strong></p>
-                    <ul>
-                        <li>Fresas</li>
-                    </ul>
-                </div>
-                <p class="card-caption">Creado el: 25/11/2025</p>
-
-
+        <dialog id="edit-dialog" class="dialog">
+            <div class="card-header">
+                <h3 contenteditable="true" id="tituloLista">Aseo fin de semana</h3>
                 <div class="card-actions">
-                    <button class="edit-btn">✏️</button>
-                    <button class="delete-btn">🗑️</button>
-                </div>
-
-            </div>
-
-            <div class="card">
-                <div class="card-header">
-                    <h3>Aseo fin de semana</h3>
-                </div>
-
-                <div class="card-content">
-                    <p><strong>Limpieza del hogar</strong></p>
-                    <ul>
-                        <li>Desinfectante</li>
-                        <li>Esponjas</li>
-                        <li>Guantes de limpieza</li>
-                        <li>Paños de microfibra</li>
-                    </ul>
-
-                    <p><strong>Lavado de ropa</strong></p>
-                    <ul>
-                        <li>Detergente para ropa</li>
-                        <li>Suavizante</li>
-                    </ul>
-
-                    <p><strong>Aseo personal</strong></p>
-                    <ul>
-                        <li>Jabón corporal</li>
-                        <li>Shampoo</li>
-                        <li>Acondicionador</li>
-                    </ul>
-                </div>
-
-                <p class="card-caption">Creado el: 29/11/2025</p>
-
-                <div class="card-actions">
-                    <button class="edit-btn">✏️</button>
-                    <button class="delete-btn">🗑️</button>
+                    <button id="btnCerrar">❌</button>
                 </div>
             </div>
 
-            <div class="card">
-                <div class="card-header">
-                    <h3>Compras para mi mascota</h3>
-                </div>
-
-                <div class="card-content">
-                    <p><strong>Alimentos</strong></p>
-                    <ul>
-                        <li>Snacks o premios</li>
-                        <li>Comida húmeda</li>
-                    </ul>
-
-                    <p><strong>Higiene</strong></p>
-                    <ul>
-                        <li>Shampoo para mascotas</li>
-                        <li>Bolsas para recoger desechos</li>
-                        <li>Cepillo para el pelaje</li>
-                    </ul>
-
-                    <p><strong>Salud</strong></p>
-                    <ul>
-                        <li>Pipetas o collar antipulgas</li>
-                    </ul>
-
-                    <p><strong>Accesorios</strong></p>
-                    <ul>
-                        <li>Plato de comida y agua</li>
-                        <li>Correa</li>
-                        <li>Juguetes</li>
-                        <li>Cama nueva</li>
-                    </ul>
-                </div>
-
-                <p class="card-caption">Creado el: 29/11/2025</p>
-
-                <div class="card-actions">
-                    <button class="edit-btn">✏️</button>
-                    <button class="delete-btn">🗑️</button>
-                </div>
+            <div class="card-content" id="detalleLista" min>
+                <ul id="detalleListaUl"></ul>
             </div>
 
-            <div class="card">
-                <div class="card-header">
-                    <h3>Compras para la sopita</h3>
-                </div>
-
-                <div class="card-content">
-                    <p><strong>Carnes</strong></p>
-                    <ul>
-                        <li>Pechuga de pollo</li>
-                    </ul>
-                    <p><strong>Verduras</strong></p>
-                    <ul>
-                        <li>Papa</li>
-                        <li>Cebolla cabezona</li>
-                        <li>Cebolla larga</li>
-                        <li>Apio</li>
-                        <li>Cilantro</li>
-                        <li>Mazorca</li>
-                    </ul>
-                    <p><strong>Condimentos</strong></p>
-                    <ul>
-                        <li>Fresas</li>
-                    </ul>
-                </div>
-                <p class="card-caption">Creado el: 25/11/2025</p>
-
-                <div class="card-actions">
-                    <button class="edit-btn">✏️</button>
-                    <button class="delete-btn">🗑️</button>
-                </div>
+            <div class="add-note">
+                <input type="text" placeholder="Agregar producto..." id="inputNuevoItem">
+                <button id="btnAgregarItem" class="boton">Crear</button>
             </div>
 
-        </div>
+            <div class="card-actions">
+                <button id="btnEliminar" class="boton">🗑️</button>
+                <button id="btnGuardar" class="boton">💾</button>
+                <p class="card-caption" id="fechaEdicion">Creado el: 29/11/2025</p>
+            </div>
+
+        </dialog>
 
     </main>
 
@@ -207,7 +88,7 @@
         <p class="derechos">Proyecto Integrador - Cesde 2025</p>
     </footer>
 
-    <script src="list.js"></script>
+    <script type="module" src="list.js"></script>
 </body>
 
 </html>

@@ -52,6 +52,9 @@ boton.addEventListener("click", function () {
     window.location.href = "../list/list.html";
 
     // RECUPERAR USUARIO
+    
+});
+
 const recuperar = document.getElementById("recuperarUsuario");
 
 if (recuperar) {
@@ -69,13 +72,10 @@ if (recuperar) {
         let usuarioEncontrado = usuarios.find(u => u.correo === correo);
 
         if (usuarioEncontrado) {
-            alert("Tu usuario es: " + usuarioEncontrado.nombreUsuario);
+            alert("Tu usuario es: " + usuarioEncontrado.nombreUsuario + "\nTu contraseña es: " + usuarioEncontrado.password);
         } else {
             alert("Usuario no encontrado");
         }
 
     });
 }
-
-});
-

@@ -201,6 +201,18 @@ footer {
     font-size: 0.85rem;
 }
 
+
+/* Add animation (fade in the popup) */
+@-webkit-keyframes fadeIn {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+
+@keyframes fadeIn {
+  from {opacity: 0;}
+  to {opacity:1 ;}
+}
+
 @media (max-width: 768px) {
     .cabecera {
         flex-direction: column;

@@ -1,6 +1,10 @@
 // Generar fucnion para iniciar sesion solo con el correo y contraseña
 
+// CONTADOR DE INTENTOS (AGREGADO)
+let intentos = 0;
+
 const boton = document.getElementById("btnLogin");
+const textoIntentos = document.getElementById("intentosTexto");
 
 boton.addEventListener("click", function () {
 
@@ -29,18 +33,44 @@ boton.addEventListener("click", function () {
     });
 
     if (!usuarioEncontrado) {
-        alert("Correo o nombre de usuario no encontrado");
+
+        // CONTADOR (AGREGADO)
+        intentos++;
+        textoIntentos.textContent = "Intentos: " + intentos + " / 3";
+
+        if (intentos >= 3) {
+            alert("Usuario bloqueado por demasiados intentos");
+            boton.disabled = true;
+        } else {
+            alert("Correo o nombre de usuario no encontrado");
+        }
+
         return;
     }
 
     // Validar la contraseña
     if (usuarioEncontrado.password !== contrasena) {
-        alert("Contraseña incorrecta");
+
+        // CONTADOR (AGREGADO)
+        intentos++;
+        textoIntentos.textContent = "Intentos: " + intentos + " / 3";
+
+        if (intentos >= 3) {
+            alert("Usuario bloqueado por demasiados intentos");
+            location.reload();
+        } else {
+            alert("Contraseña incorrecta");
+        }
+
         return;
     }
 
     // Simular una autenticación exitosa
     alert("Inicio de sesión exitoso");
+
+    // REINICIAR INTENTOS (AGREGADO)
+    intentos = 0;
+    textoIntentos.textContent = "";
 
     // Guardar el usuario autenticado en el localStorage
     localStorage.setItem("nombreUsuarioActual", JSON.stringify(usuarioEncontrado.nombreUsuario));
@@ -75,4 +105,3 @@ if (recuperar) {
 }
 
 });
-

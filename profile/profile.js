@@ -37,7 +37,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 // GUARDAR CAMBIOS DEL PERFIL
-const botonGuardar = document.getElementById("btnGuardar");
+const botonGuardar = document.getElementById("btnGuardarPerfil");
 
 botonGuardar.addEventListener("click", function () {
 
@@ -63,7 +63,7 @@ botonGuardar.addEventListener("click", function () {
 
 
 // CAMBIAR CONTRASEÑA
-const botonClave = document.getElementById("btnGuardar");
+const botonClave = document.getElementById("btnGuardarContrasena");
 
 botonClave.addEventListener("click", function () {
 
@@ -83,6 +83,21 @@ botonClave.addEventListener("click", function () {
 
     if (usuarios[usuarioIndex].password !== claveActual) {
         alert("La contraseña actual es incorrecta");
+        return;
+    }
+
+    if (!nuevaClave) {
+        alert("La nueva contraseña no puede estar vacía");
+        return;
+    }
+
+    if (nuevaClave === claveActual) {
+        alert("La nueva contraseña no puede ser igual a la actual");
+        return;
+    }
+    
+    if (!confirmarClave) {
+        alert("Por favor, confirma la nueva contraseña");
         return;
     }
 

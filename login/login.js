@@ -67,6 +67,7 @@ boton.addEventListener("click", function () {
 
         return;
     }
+
     // Simular una autenticación exitosa
     alert("Inicio de sesión exitoso");
 
@@ -77,8 +78,13 @@ boton.addEventListener("click", function () {
     // Guardar el usuario autenticado en el localStorage
     localStorage.setItem("nombreUsuarioActual", JSON.stringify(usuarioEncontrado.nombreUsuario));
 
-    // Redirigir al usuario a la página de lista de tareas
-    window.location.href = "../list/list.html";
+    // 🔥 NUEVO: VALIDAR ROL
+    if (usuarioEncontrado.rol === "admin") {
+        window.location.href = "../admin/admin.html";
+    } else {
+        // Redirigir al usuario normal
+        window.location.href = "../list/list.html";
+    }
 
 });
 

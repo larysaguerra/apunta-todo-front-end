@@ -12,13 +12,13 @@ boton.addEventListener("click", function () {
     const apellido = document.getElementById("apellido").value;
     const correo = document.getElementById("correo").value;
     const telefono = document.getElementById("telefono").value;
-    const usuario = document.getElementById("usuario").value;
+    const nombreUsuario = document.getElementById("usuario").value;
     const password = document.getElementById("password").value;
     const confirmarPassword = document.getElementById("confirmarPassword").value;
 
     const mensaje = document.getElementById("mensaje");
 
-    if (nombre === "" || apellido === "" || correo === "" || telefono === "" || usuario === "" || password === "" || confirmarPassword === "") {
+    if (nombre === "" || apellido === "" || correo === "" || telefono === "" || nombreUsuario === "" || password === "" || confirmarPassword === "") {
         mensaje.textContent = "Todos los campos son obligatorios";
         return;
     }
@@ -30,7 +30,7 @@ boton.addEventListener("click", function () {
         mensaje.textContent = "El correo ya está en uso";
         return;
     }
-    if (usuarios.some(u => u.nombreUsuario === usuario)) {
+    if (usuarios.some(u => u.nombreUsuario === nombreUsuario)) {
         mensaje.textContent = "El nombre de usuario ya está en uso";
         return;
     }
@@ -44,9 +44,17 @@ boton.addEventListener("click", function () {
     }
 
     // Crear un nuevo usuario y guardarlo en el localStorage
-    const usuarioNuevo = new Usuario(nombre, apellido, correo, telefono, usuario, password);
+    const nuevoUsuario = new Usuario(
+        nombre,
+        apellido,
+        correo,
+        telefono,
+        nombreUsuario,
+        password,
+        "usuario" // rol por defecto
+    );
 
-    usuarios.push(usuarioNuevo);
+    usuarios.push(nuevoUsuario);
     localStorage.setItem("usuarios", JSON.stringify(usuarios));
     mensaje.textContent = "Registro exitoso";
 

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Administrador</title>
+
+    <!-- ESTILOS GENERALES -->
+    <link rel="stylesheet" href="../css/style.css">
+
+    <!-- ESTILOS DEL ADMIN -->
+    <link rel="stylesheet" href="admin.css">
+
+    <link rel="shortcut icon" href="../images/fav_icon_apunta_todo.png" type="image/x-icon">
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100..700;1,100..700&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <header>
+        <div class="cabecera cabecera-login">
+            <a href="../index/index.html" class="logotipo">
+                <img src="../images/logo_apunta_todo_con_nombre.png" alt="Logo Apunta_todo">
+            </a>
+            <nav class="navegacion-principal">
+                <ul>
+                    <li></li>
+                </ul>
+            </nav>
+            <div class="user-area">
+                <a href="../profile/profile.html">
+                    <p id="nombreHeader"></p>
+                </a>
+                <a href="../profile/profile.html"><span class="icon">👤</span></a>
+            </div>
+        </div>
+    </header>
+
+    <!-- CONTENIDO ADMIN -->
+    <main>
+
+        <div class="form-container admin-container">
+
+            <h2>Administración de Usuarios</h2>
+
+            <input type="button" value="Crear Usuario" id="btnNuevo" class="boton">
+
+            <table class="admin-table">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Apellido</th>
+                        <th>Correo</th>
+                        <th>Usuario</th>
+                        <th>Rol</th>
+                        <th>Opciones</th>
+                    </tr>
+                </thead>
+                <tbody id="tablaUsuarios"></tbody>
+            </table>
+
+        </div>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="pie">
+            <a href="#" class="logotipo">
+                <img src="../images/logo_apunta_todo_con_nombre_gris.png" alt="Logo Apunta_todo">
+            </a>
+            <div class="redes">
+                <img src="../images/icon_facebook.png" alt="icono facebook">
+                <a href="https://www.facebook.com/" target="_blank">@facebook</a>
+                <img src="../images/icon_whatsapp.png" alt="icono whatsapp">
+                <a href="https://www.whatsapp.com/" target="_blank">@whatsapp</a>
+                <img src="../images/icon_instagram.png" alt="icono instagram">
+                <a href="https://www.instagram.com/" target="_blank">@instagram</a>
+            </div>
+        </div>
+        <p class="derechos">Copyright ©️ 2025. Apunta ToDo. Todos los derechos reservados.</p>
+        <p class="derechos">Proyecto Integrador - Cesde 2025</p>
+    </footer>
+
+    <!-- JS -->
+    <script src="admin.js"></script>
+
+</body>
+
+</html>

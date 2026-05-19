@@ -1,52 +1,140 @@
-/* CONTENEDOR PRINCIPAL */
+/* ===== ADMIN PAGE - VERDANT SLATE ===== */
+
+body {
+    padding-top: 72px;
+}
+
+main {
+    flex: 1;
+    padding: 2.5rem 1.5rem 5rem;
+}
+
+/* ===== CONTENEDOR ADMIN ===== */
 .admin-container {
-    width: 90%;
-    max-width: 1000px;
-    margin: 40px auto;
+    max-width: 1100px;
+    margin: 0 auto;
+    background: var(--surface-container-lowest);
+    border-radius: var(--radius-xl);
+    padding: 2.5rem;
+    box-shadow: var(--editorial-shadow);
+    animation: fadeIn 0.4s ease;
 }
 
-/* BOTÓN CREAR */
+.admin-container h2 {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--primary);
+    letter-spacing: -0.025em;
+    margin-bottom: 1.75rem;
+}
+
+/* ===== BOTÓN CREAR ===== */
 #btnNuevo {
-    margin-bottom: 20px;
+    margin-bottom: 2rem;
 }
 
-/* TABLA */
+/* ===== TABLA ===== */
 .admin-table {
     width: 100%;
     border-collapse: collapse;
-    background-color: #fff;
+    font-size: 0.9375rem;
+}
+
+.admin-table thead {
+    background-color: var(--surface-container-low);
+    border-radius: var(--radius-md);
 }
 
 .admin-table th {
-    background-color: #f5f5f5;
+    padding: 0.875rem 1rem;
     text-align: left;
-    padding: 10px;
-    font-weight: bold;
+    font-size: 0.6875rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--on-surface-variant);
+}
+
+.admin-table th:first-child {
+    border-radius: var(--radius-md) 0 0 var(--radius-md);
+}
+
+.admin-table th:last-child {
+    border-radius: 0 var(--radius-md) var(--radius-md) 0;
 }
 
 .admin-table td {
-    padding: 10px;
-    border-top: 1px solid #ddd;
+    padding: 1rem;
+    color: var(--on-surface);
+    font-size: 0.9375rem;
+    vertical-align: middle;
 }
 
-/* FILAS */
-.admin-table tr:hover {
-    background-color: #f9f9f9;
+.admin-table tbody tr {
+    border-bottom: 1px solid rgba(191, 201, 196, 0.25);
+    transition: background-color 0.15s;
 }
 
-/* BOTONES */
+.admin-table tbody tr:last-child {
+    border-bottom: none;
+}
+
+.admin-table tbody tr:hover {
+    background-color: var(--surface-container-low);
+}
+
+/* ===== BOTONES DE ACCIÓN EN TABLA ===== */
 .btn-accion {
     border: none;
     background: none;
     cursor: pointer;
-    font-size: 16px;
-    margin-right: 5px;
+    font-size: 0.875rem;
+    font-family: inherit;
+    font-weight: 600;
+    padding: 0.375rem 0.875rem;
+    border-radius: var(--radius-md);
+    transition: var(--transition);
 }
 
 .btn-editar {
-    color: #007bff;
+    color: var(--primary);
+    background: var(--secondary-container);
+}
+
+.btn-editar:hover {
+    background: var(--primary-fixed-dim);
 }
 
 .btn-eliminar {
-    color: #dc3545;
+    color: var(--error);
+    background: rgba(186, 26, 26, 0.08);
+}
+
+.btn-eliminar:hover {
+    background: rgba(186, 26, 26, 0.15);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+    .admin-container {
+        padding: 1.5rem;
+        border-radius: var(--radius-lg);
+    }
+
+    .admin-table {
+        font-size: 0.8125rem;
+    }
+
+    .admin-table th,
+    .admin-table td {
+        padding: 0.75rem 0.5rem;
+    }
+
+    /* Ocultar columnas menos importantes en mobile */
+    .admin-table th:nth-child(3),
+    .admin-table td:nth-child(3),
+    .admin-table th:nth-child(4),
+    .admin-table td:nth-child(4) {
+        display: none;
+    }
 }

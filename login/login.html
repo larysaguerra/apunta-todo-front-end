@@ -4,13 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Apuntado ToDo</title>
+    <title>Iniciar Sesión - Apunta Todo</title>
     <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="../signup/signup.css">
+    <link rel="stylesheet" href="login.css">
     <link rel="shortcut icon" href="../images/fav_icon_apunta_todo.png" type="image/x-icon">
-    <link
-        href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100..700;1,100..700&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
-        rel="stylesheet">
 </head>
 
 <body>
@@ -18,11 +15,11 @@
     <header>
         <div class="cabecera">
             <a href="../index/index.html" class="logotipo">
-                <img src="../images/logo_apunta_todo_con_nombre.png" alt="Logo Apunta_todo">
+                <img src="../images/logo_apunta_todo_con_nombre.png" alt="Logo Apunta Todo">
             </a>
             <nav class="navegacion-principal">
                 <ul>
-                    <li></li>
+                    <li><a href="../index/index.html">Inicio</a></li>
                 </ul>
             </nav>
             <div class="acciones-cabecera">
@@ -31,38 +28,70 @@
         </div>
     </header>
 
-    <main>
-        <div class="form-container">
-            <h2>Iniciar Sesión</h2>
+    <main class="main-login">
+        <div class="login-grid">
 
-            <form>
-                <label for="correo">Correo electrónico</label>
-                <input type="email" id="correo" name="correo" required>
+            <!-- Panel imagen (solo desktop) -->
+            <section class="login-hero">
+                <img src="../images/fondo_inicio.jpg" alt="Espacio organizado">
+                <div class="login-hero-overlay"></div>
+                <div class="login-hero-content">
+                    <h1>La claridad nace del orden.</h1>
+                    <p>Tu archivo personal, curado con la precisión de un experto y la calidez de un hogar.</p>
+                </div>
+            </section>
 
-                <label for="contrasena">Contraseña</label>
-                <input type="password" id="contrasena" name="contrasena" required>
+            <!-- Formulario de login -->
+            <section class="login-card-wrapper">
+                <div class="login-card">
+                    <div class="login-card-header">
+                        <h2>Iniciar Sesión</h2>
+                        <p>Bienvenido de nuevo a tu archivo personal.</p>
+                    </div>
 
-                <input type="button" value="Iniciar Sesión" class="boton" id="btnLogin">
-                <p id="intentosTexto"></p>
+                    <form>
+                        <div class="form-group">
+                            <label class="form-label" for="correo">Correo electrónico</label>
+                            <input class="form-input" type="email" id="correo" name="correo" placeholder="ejemplo@correo.com" required>
+                        </div>
 
-                <p id="recuperarUsuario" class="recuperar">
-                    ¿Olvidaste tu usuario o contraseña?
-                </p>
-            </form>
+                        <div class="form-group">
+                            <div class="label-row">
+                                <label class="form-label" for="contrasena">Contraseña</label>
+                                <a class="forgot-link" href="#">¿Olvidaste tu contraseña?</a>
+                            </div>
+                            <input class="form-input" type="password" id="contrasena" name="contrasena" placeholder="••••••••" required>
+                        </div>
+
+                        <input type="button" value="Entrar" class="btn-login-submit" id="btnLogin">
+                        <p id="intentosTexto"></p>
+                    </form>
+
+                    <p id="recuperarUsuario" class="recuperar">
+                        ¿Olvidaste tu usuario o contraseña?
+                    </p>
+
+                    <div class="login-card-footer">
+                        <span>¿No tienes una cuenta?</span>
+                        <a href="../signup/signup.html">Regístrate</a>
+                    </div>
+                </div>
+            </section>
+
         </div>
     </main>
 
     <footer>
         <div class="pie">
-            <a href="#" class="logotipo">
-                <img src="../images/logo_apunta_todo_con_nombre_gris.png" alt="Logo Apunta_todo">
+            <a href="../index/index.html" class="logotipo">
+                <img src="../images/logo_apunta_todo_con_nombre_gris.png" alt="Logo Apunta Todo">
             </a>
             <div class="redes">
-                <img src="../images/icon_facebook.png" alt="icono facebook">
+                <img src="../images/icon_facebook.png" alt="facebook">
                 <a href="https://www.facebook.com/" target="_blank">@facebook</a>
-                <img src="../images/icon_whatsapp.png" alt="icono whatsapp">
+                <img src="../images/icon_whatsapp.png" alt="whatsapp">
                 <a href="https://www.whatsapp.com/" target="_blank">@whatsapp</a>
-                <img src="../images/icon_instagram.png" alt="icono instagram">
+                <img src="../images/icon_instagram.png" alt="instagram">
                 <a href="https://www.instagram.com/" target="_blank">@instagram</a>
             </div>
         </div>

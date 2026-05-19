@@ -4,32 +4,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Apuntado ToDo</title>
+    <title>Mis Listas - Apunta Todo</title>
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="list.css">
     <link rel="shortcut icon" href="../images/fav_icon_apunta_todo.png" type="image/x-icon">
-    <link
-        href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100..700;1,100..700&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
 </head>
 
 <body>
 
     <header>
-        <div class="cabecera cabecera-login">
+        <div class="cabecera">
             <a href="../index/index.html" class="logotipo">
-                <img src="../images/logo_apunta_todo_con_nombre.png" alt="Logo Apunta_todo">
+                <img src="../images/logo_apunta_todo_con_nombre.png" alt="Logo Apunta Todo">
             </a>
             <nav class="navegacion-principal">
                 <ul>
-                    <li></li>
+                    <li><a href="../list/list.html" class="activo">Mis Listas</a></li>
+                    <li><a href="../profile/profile.html">Perfil</a></li>
                 </ul>
             </nav>
             <div class="user-area">
                 <a href="../profile/profile.html">
                     <p>User Name</p>
                 </a>
-                <a href="../profile/profile.html"><span class="icon">👤</span></a>
+                <a href="../profile/profile.html">
+                    <span class="material-symbols-outlined" style="color: var(--primary);">account_circle</span>
+                </a>
             </div>
         </div>
     </header>
@@ -38,7 +39,7 @@
 
         <div class="add-note">
             <input type="text" placeholder="Nombre de la lista..." id="inputTitulo">
-            <button id="btnAgregarLista" class="boton">Crear</button>
+            <button id="btnAgregarLista" class="boton">Crear lista</button>
         </div>
 
         <div class="cards-container" id="cards-container"></div>
@@ -47,40 +48,39 @@
             <div class="card-header">
                 <h3 contenteditable="true" id="tituloLista">Aseo fin de semana</h3>
                 <div class="card-actions">
-                    <button id="btnCerrar">❌</button>
+                    <button id="btnCerrar">✕</button>
                 </div>
             </div>
 
-            <div class="card-content" id="detalleLista" min>
+            <div class="card-content" id="detalleLista">
                 <ul id="detalleListaUl"></ul>
             </div>
 
             <div class="add-note">
                 <input type="text" placeholder="Agregar producto..." id="inputNuevoItem">
-                <button id="btnAgregarItem" class="boton">Crear</button>
+                <button id="btnAgregarItem" class="boton">Agregar</button>
             </div>
 
             <div class="card-actions">
-                <button id="btnEliminar" class="boton">🗑️</button>
-                <button id="btnGuardar" class="boton">💾</button>
+                <button id="btnEliminar" class="boton boton-secundario">🗑️ Eliminar</button>
+                <button id="btnGuardar" class="boton">💾 Guardar</button>
                 <p class="card-caption" id="fechaEdicion">Creado el: 29/11/2025</p>
             </div>
-
         </dialog>
 
     </main>
 
     <footer>
         <div class="pie">
-            <a href="#" class="logotipo">
-                <img src="../images/logo_apunta_todo_con_nombre_gris.png" alt="Logo Apunta_todo">
+            <a href="../index/index.html" class="logotipo">
+                <img src="../images/logo_apunta_todo_con_nombre_gris.png" alt="Logo Apunta Todo">
             </a>
             <div class="redes">
-                <img src="../images/icon_facebook.png" alt="icono facebook">
+                <img src="../images/icon_facebook.png" alt="facebook">
                 <a href="https://www.facebook.com/" target="_blank">@facebook</a>
-                <img src="../images/icon_whatsapp.png" alt="icono whatsapp">
+                <img src="../images/icon_whatsapp.png" alt="whatsapp">
                 <a href="https://www.whatsapp.com/" target="_blank">@whatsapp</a>
-                <img src="../images/icon_instagram.png" alt="icono instagram">
+                <img src="../images/icon_instagram.png" alt="instagram">
                 <a href="https://www.instagram.com/" target="_blank">@instagram</a>
             </div>
         </div>

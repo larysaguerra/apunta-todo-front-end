@@ -1,69 +1,136 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Perfil de Usuario</title>
+    <title>Perfil de Usuario - Apunta Todo</title>
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="profile.css">
     <link rel="shortcut icon" href="../images/fav_icon_apunta_todo.png" type="image/x-icon">
-    <link
-        href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100..700;1,100..700&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
 </head>
 
 <body>
+
     <header>
-        <div class="cabecera cabecera-login">
+        <div class="cabecera">
             <a href="../index/index.html" class="logotipo">
-                <img src="../images/logo_apunta_todo_con_nombre.png" alt="Logo Apunta_todo">
+                <img src="../images/logo_apunta_todo_con_nombre.png" alt="Logo Apunta Todo">
             </a>
             <nav class="navegacion-principal">
                 <ul>
-                    <li></li>
+                    <li><a href="../list/list.html">Mis Listas</a></li>
+                    <li><a href="../profile/profile.html" class="activo">Perfil</a></li>
                 </ul>
             </nav>
             <div class="user-area">
                 <a href="../profile/profile.html">
                     <p id="nombreHeader"></p>
                 </a>
-                <a href="../profile/profile.html"><span class="icon">👤</span></a>
+                <a href="../profile/profile.html">
+                    <span class="material-symbols-outlined" style="color: var(--primary);">account_circle</span>
+                </a>
             </div>
         </div>
     </header>
 
     <main>
 
-        <div class="form-container">
-            <form>
-                <h2>Información Personal</h2>
-                <label>Nombre</label>
-                <input type="text" value="" id="nombre" />
-                <label>Apellido</label>
-                <input type="text" value="" id="apellido" />
-                <label>Nombre de Usuario</label>
-                <input class="input-with-prefix" type="text" value="" id="nombreUsuario" />
-                <label>Correo Electrónico</label>
-                <input type="email" value="" id="correo" />
-                <label>Teléfono</label>
-                <input type="tel" value="" id="telefono" />
-        
-                <h2>Seguridad</h2>
-                <label>Contraseña actual</label>
-<input id="claveActual" placeholder="••••••••••••" type="password" />
+        <!-- Hero del perfil -->
+        <header class="profile-hero">
+            <div class="profile-avatar-container">
+                <div class="avatar-large">👤</div>
+            </div>
+            <div class="profile-info">
+                <p class="membership">Mi perfil</p>
+                <h1 id="nombreHeader2">Usuario</h1>
+                <p class="role" id="rolUsuario">Miembro</p>
+            </div>
+        </header>
 
-<label>Nueva contraseña</label>
-<input id="nuevaClave" type="password" />
+        <!-- Layout de dos columnas -->
+        <div class="layout-grid">
 
-<label>Confirmar nueva contraseña</label>
-<input id="confirmarClave" type="password" />
-            </form>
+            <!-- Columna principal: formularios -->
+            <section class="form-sections">
 
-            <input type="button" value="Actualizar perfil" id="btnGuardarPerfil" class="boton">
-            <input type="button" value="Actualizar contraseña" id="btnGuardarContrasena" class="boton">
-            <input type="button" value="Cancelar" id="btnCancelar" class="boton boton-secundario">
-            <input type="button" value="Cerrar sesión" id="btnCerrarSesion" class="boton boton-secundario">
+                <!-- Card información personal -->
+                <div class="card">
+                    <div class="card-header">
+                        <span class="material-symbols-outlined">person</span>
+                        <h2>Información Personal</h2>
+                    </div>
+                    <form class="form-grid">
+                        <div class="form-group">
+                            <label for="nombre">Nombre</label>
+                            <input type="text" id="nombre" value="">
+                        </div>
+                        <div class="form-group">
+                            <label for="apellido">Apellido</label>
+                            <input type="text" id="apellido" value="">
+                        </div>
+                        <div class="form-group col-span-2">
+                            <label for="nombreUsuario">Nombre de Usuario</label>
+                            <div class="input-wrapper">
+                                <span class="prefix">@</span>
+                                <input class="input-with-prefix" type="text" id="nombreUsuario" value="">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="correo">Correo Electrónico</label>
+                            <input type="email" id="correo" value="">
+                        </div>
+                        <div class="form-group">
+                            <label for="telefono">Teléfono</label>
+                            <input type="tel" id="telefono" value="">
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Card seguridad -->
+                <div class="card">
+                    <div class="card-header">
+                        <span class="material-symbols-outlined">shield</span>
+                        <h2>Seguridad</h2>
+                    </div>
+                    <div class="form-grid">
+                        <div class="form-group col-span-2">
+                            <label for="claveActual">Contraseña actual</label>
+                            <input id="claveActual" placeholder="••••••••••••" type="password">
+                        </div>
+                        <div class="form-group">
+                            <label for="nuevaClave">Nueva contraseña</label>
+                            <input id="nuevaClave" type="password">
+                        </div>
+                        <div class="form-group">
+                            <label for="confirmarClave">Confirmar nueva contraseña</label>
+                            <input id="confirmarClave" type="password">
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+
+            <!-- Sidebar -->
+            <aside class="sidebar">
+                <div class="status-card">
+                    <h3>Tu cuenta está activa</h3>
+                    <p>Mantén tu información actualizada para una mejor experiencia de organización.</p>
+                    <div class="progress-bar">
+                        <div class="progress-fill"></div>
+                    </div>
+                </div>
+
+                <div class="actions-group">
+                    <input type="button" value="Actualizar perfil" id="btnGuardarPerfil" class="btn btn-primary">
+                    <input type="button" value="Actualizar contraseña" id="btnGuardarContrasena" class="btn btn-primary">
+                    <input type="button" value="Cancelar" id="btnCancelar" class="btn btn-secondary">
+                    <div class="logout-container">
+                        <input type="button" value="Cerrar sesión" id="btnCerrarSesion" class="btn-logout">
+                    </div>
+                </div>
+            </aside>
 
         </div>
 
@@ -71,21 +138,27 @@
 
     <footer>
         <div class="pie">
-            <a href="#" class="logotipo">
-                <img src="../images/logo_apunta_todo_con_nombre_gris.png" alt="Logo Apunta_todo">
+            <a href="../index/index.html" class="logotipo">
+                <img src="../images/logo_apunta_todo_con_nombre_gris.png" alt="Logo Apunta Todo">
             </a>
             <div class="redes">
-                <img src="../images/icon_facebook.png" alt="icono facebook">
+                <img src="../images/icon_facebook.png" alt="facebook">
                 <a href="https://www.facebook.com/" target="_blank">@facebook</a>
-                <img src="../images/icon_whatsapp.png" alt="icono whatsapp">
+                <img src="../images/icon_whatsapp.png" alt="whatsapp">
                 <a href="https://www.whatsapp.com/" target="_blank">@whatsapp</a>
-                <img src="../images/icon_instagram.png" alt="icono instagram">
+                <img src="../images/icon_instagram.png" alt="instagram">
                 <a href="https://www.instagram.com/" target="_blank">@instagram</a>
             </div>
         </div>
         <p class="derechos">Copyright ©️ 2025. Apunta ToDo. Todos los derechos reservados.</p>
         <p class="derechos">Proyecto Integrador - Cesde 2025</p>
     </footer>
+
+    <!-- Blobs decorativos -->
+    <div class="bg-blobs">
+        <div class="blob-1"></div>
+        <div class="blob-2"></div>
+    </div>
 
     <script src="profile.js"></script>
 

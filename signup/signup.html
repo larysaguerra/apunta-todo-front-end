@@ -4,13 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Apuntado ToDo - Registro</title>
+    <title>Registro - Apunta Todo</title>
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="signup.css">
     <link rel="shortcut icon" href="../images/fav_icon_apunta_todo.png" type="image/x-icon">
-    <link
-        href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans&family=Roboto&display=swap"
-        rel="stylesheet">
 </head>
 
 <body>
@@ -18,11 +15,11 @@
     <header>
         <div class="cabecera">
             <a href="../index/index.html" class="logotipo">
-                <img src="../images/logo_apunta_todo_con_nombre.png" alt="Logo Apunta_todo">
+                <img src="../images/logo_apunta_todo_con_nombre.png" alt="Logo Apunta Todo">
             </a>
-           <nav class="navegacion-principal">
+            <nav class="navegacion-principal">
                 <ul>
-                    <li></li>
+                    <li><a href="../index/index.html">Inicio</a></li>
                 </ul>
             </nav>
             <div class="acciones-cabecera">
@@ -31,55 +28,91 @@
         </div>
     </header>
 
-    <main>
-        <div class="form-container">
-            <h2>Registro</h2>
+    <main class="main-signup">
+        <div class="signup-grid">
 
-            <form id="formRegistro">
+            <!-- Panel promo (solo desktop) -->
+            <aside class="signup-promo">
+                <h1>Empieza tu viaje curado.</h1>
+                <p>Únete a una comunidad que valora la claridad sobre el caos. Organiza tus compras en nuestro diario digital de grado editorial.</p>
+                <div class="signup-promo-img">
+                    <img src="../images/working 2.jpg" alt="Espacio de trabajo organizado">
+                </div>
+            </aside>
 
-                <label for="nombre">Nombre</label>
-                <input type="text" id="nombre" required>
+            <!-- Formulario de registro -->
+            <section class="signup-card">
+                <div class="signup-card-header">
+                    <h2>Registro</h2>
+                    <p>Crea tu cuenta para comenzar a organizar.</p>
+                </div>
 
-                <label for="apellido">Apellido</label>
-                <input type="text" id="apellido" required>
+                <form id="formRegistro">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="nombre">Nombre</label>
+                            <input type="text" id="nombre" placeholder="Juan" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="apellido">Apellido</label>
+                            <input type="text" id="apellido" placeholder="Pérez" required>
+                        </div>
+                    </div>
 
-                <label for="telefono">Teléfono</label>
-                <input type="text" id="telefono" required>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="telefono">Teléfono</label>
+                            <input type="text" id="telefono" placeholder="+57 300 000 0000" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="usuario">Usuario</label>
+                            <input type="text" id="usuario" placeholder="juanperez88" required>
+                        </div>
+                    </div>
 
-                <label for="correo">Correo electrónico</label>
-                <input type="email" id="correo" required>
+                    <div class="form-group">
+                        <label for="correo">Correo electrónico</label>
+                        <input type="email" id="correo" placeholder="juan@ejemplo.com" required>
+                    </div>
 
-                <label for="usuario">Usuario</label>
-                <input type="text" id="usuario" required>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="password">Contraseña</label>
+                            <input type="password" id="password" placeholder="••••••••" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="confirmarPassword">Confirmar contraseña</label>
+                            <input type="password" id="confirmarPassword" placeholder="••••••••" required>
+                        </div>
+                    </div>
 
-                <label for="password">Contraseña</label>
-                <input type="password" id="password" required>
+                    <button type="button" id="btnRegistro" class="btn-signup-submit">
+                        Registrarme
+                    </button>
+                </form>
 
-                <label for="confirmarPassword">Repite tu contraseña</label>
-                <input type="password" id="confirmarPassword" required>
+                <p id="mensaje"></p>
 
-                <button type="button" id="btnRegistro" class="boton">
-                    Registrarme
-                </button>
-
-            </form>
-
-            <p id="mensaje"></p>
+                <div class="signup-card-footer">
+                    <span>¿Ya tienes una cuenta?</span>
+                    <a href="../login/login.html">Inicia sesión</a>
+                </div>
+            </section>
 
         </div>
     </main>
 
     <footer>
         <div class="pie">
-            <a href="#" class="logotipo">
-                <img src="../images/logo_apunta_todo_con_nombre_gris.png" alt="Logo Apunta_todo">
+            <a href="../index/index.html" class="logotipo">
+                <img src="../images/logo_apunta_todo_con_nombre_gris.png" alt="Logo Apunta Todo">
             </a>
             <div class="redes">
-                <img src="../images/icon_facebook.png" alt="icono facebook">
+                <img src="../images/icon_facebook.png" alt="facebook">
                 <a href="https://www.facebook.com/" target="_blank">@facebook</a>
-                <img src="../images/icon_whatsapp.png" alt="icono whatsapp">
+                <img src="../images/icon_whatsapp.png" alt="whatsapp">
                 <a href="https://www.whatsapp.com/" target="_blank">@whatsapp</a>
-                <img src="../images/icon_instagram.png" alt="icono instagram">
+                <img src="../images/icon_instagram.png" alt="instagram">
                 <a href="https://www.instagram.com/" target="_blank">@instagram</a>
             </div>
         </div>

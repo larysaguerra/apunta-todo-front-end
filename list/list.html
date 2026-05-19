@@ -38,7 +38,7 @@
 
         <div class="add-note">
             <input type="text" placeholder="Nombre de la lista..." id="inputTitulo">
-            <button id="btnAgregarLista" class="boton">Crear</button>
+            <button type="button" id="btnAgregarLista" class="boton">Crear</button>
         </div>
 
         <div class="cards-container" id="cards-container"></div>
@@ -47,7 +47,7 @@
             <div class="card-header">
                 <h3 contenteditable="true" id="tituloLista">Aseo fin de semana</h3>
                 <div class="card-actions">
-                    <button id="btnCerrar">❌</button>
+                    <button type="button" id="btnCerrar">❌</button>
                 </div>
             </div>
 
@@ -57,15 +57,21 @@
 
             <div class="add-note">
                 <input type="text" placeholder="Agregar producto..." id="inputNuevoItem">
-                <button id="btnAgregarItem" class="boton">Crear</button>
+                <button type="button" id="btnAgregarItem" class="boton">Crear</button>
             </div>
 
             <div class="card-actions">
-                <button id="btnEliminar" class="boton">🗑️</button>
-                <button id="btnGuardar" class="boton">💾</button>
+                <button type="button" id="btnEliminar" class="boton">🗑️</button>
+                <button type="button" id="btnGuardar" class="boton">💾</button>
                 <p class="card-caption" id="fechaEdicion">Creado el: 29/11/2025</p>
             </div>
 
+        </dialog>
+
+        <dialog id="category-dialog" class="dialog category-dialog">
+            <h4 id="category-dialog-title" class="category-dialog-title">¿Dónde va el producto?</h4>
+            <div id="category-grid" class="category-grid" role="group" aria-label="Elegir categoría"></div>
+            <button type="button" id="btnCancelarCategoria" class="boton boton-secundario">Cancelar</button>
         </dialog>
 
     </main>

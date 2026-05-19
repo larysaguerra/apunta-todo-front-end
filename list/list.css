@@ -157,3 +157,154 @@ main {
     width: 400px;
     max-width: 90%;
 }
+
+#edit-dialog {
+    z-index: 1000;
+}
+
+.category-dialog {
+    width: 520px;
+    max-height: 90vh;
+    overflow-y: auto;
+    z-index: 1100;
+}
+
+.category-dialog::backdrop {
+    background-color: rgba(0, 0, 0, 0.45);
+}
+
+.category-dialog-title {
+    margin: 0 0 16px;
+    font-size: 1.1rem;
+    color: var(--color-principal);
+    text-align: center;
+}
+
+.category-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    margin-bottom: 16px;
+}
+
+.category-chip {
+    background-color: var(--color-fondo);
+    color: var(--color-texto);
+    border: 2px solid var(--borde-gris);
+    border-radius: 8px;
+    padding: 12px 8px;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: background-color 0.15s, border-color 0.15s;
+}
+
+.category-chip:hover {
+    border-color: var(--color-principal);
+    background-color: var(--color-acento);
+}
+
+.boton-secundario {
+    display: block;
+    width: 100%;
+    margin-left: 0;
+    background-color: transparent;
+    color: var(--color-principal);
+    border: 2px solid var(--color-principal);
+}
+
+.boton-secundario:hover {
+    background-color: var(--color-fondo);
+}
+
+#detalleListaUl {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.categoria-grupo {
+    list-style: none;
+    margin-bottom: 16px;
+}
+
+.categoria-titulo {
+    margin: 0 0 8px;
+    padding: 6px 10px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--color-principal);
+    background-color: var(--color-acento);
+    border-radius: 6px;
+}
+
+.categoria-items {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.detalle-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    gap: 8px;
+}
+
+.detalle-item-nombre {
+    flex: 1;
+    margin-left: 4px;
+}
+
+.detalle-item-nombre.completado {
+    text-decoration: line-through;
+    opacity: 0.7;
+}
+
+.detalle-item-acciones {
+    display: flex;
+    gap: 8px;
+}
+
+.detalle-btn-icono {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    padding: 0;
+}
+
+.lista-vacia {
+    color: var(--borde-gris);
+    font-style: italic;
+    list-style: none;
+}
+
+.lista-agrupada {
+    list-style: none;
+    padding-left: 0;
+}
+
+.categoria-seccion {
+    list-style: none;
+    margin-bottom: 10px;
+}
+
+.categoria-seccion-titulo {
+    display: block;
+    font-weight: 700;
+    font-size: 0.85rem;
+    color: var(--color-principal);
+    margin-bottom: 4px;
+}
+
+.categoria-seccion ul {
+    padding-left: 16px;
+    margin: 0 0 6px;
+}
+
+@media (min-width: 480px) {
+    .category-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}

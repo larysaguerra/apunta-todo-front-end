@@ -1,25 +1,124 @@
-import { Usuario } from "../models/usuario.js";
 import { Lista } from "../models/lista.js";
 import { Detalle } from "../models/detalle.js";
+import { CATEGORIAS_PRODUCTO, CATEGORIA_OTROS } from "../models/categorias.js";
 
 let idUsuario = getCurrentUserId();
+let pendingItem = null;
 
-construirListas();
-
-// UI: event listeners
 const btnAgregarLista = document.getElementById("btnAgregarLista");
 const btnCerrar = document.getElementById("btnCerrar");
 const editDialog = document.getElementById("edit-dialog");
+const categoryDialog = document.getElementById("category-dialog");
 const btnEliminarListaDialog = document.getElementById("btnEliminar");
 const btnGuardarTitulo = document.getElementById("btnGuardar");
 const btnAgregarItem = document.getElementById("btnAgregarItem");
 const inputNuevoItem = document.getElementById("inputNuevoItem");
+const categoryDialogTitle = document.getElementById("category-dialog-title");
+const categoryGrid = document.getElementById("category-grid");
+const btnCancelarCategoria = document.getElementById("btnCancelarCategoria");
 
 btnAgregarLista.addEventListener("click", crearLista);
 btnCerrar.addEventListener("click", function () {
     editDialog.close();
+    categoryDialog.close();
+    pendingItem = null;
     construirListas();
 });
+
+btnCancelarCategoria.addEventListener("click", function () {
+    categoryDialog.close();
+    pendingItem = null;
+});
+
+btnAgregarItem.addEventListener("click", function (e) {
+    e.preventDefault();
+    const idLista = editDialog.dataset.listaId;
+    if (!idLista) {
+        return;
+    }
+
+    const nombreProducto = inputNuevoItem.value.trim();
+    if (nombreProducto === "") {
+        alert("Por favor, ingresa un nombre para el item");
+        return;
+    }
+
+    abrirSelectorCategoria({
+        idLista,
+        producto: nombreProducto,
+        mode: "create",
+    });
+});
+
+initCategoryDialog();
+construirListas();
+
+function initCategoryDialog() {
+    categoryGrid.innerHTML = "";
+    CATEGORIAS_PRODUCTO.forEach((categoria) => {
+        const btn = document.createElement("button");
+        btn.type = "button";
+        btn.className = "category-chip";
+        btn.textContent = categoria;
+        btn.addEventListener("click", function () {
+            confirmarCategoria(categoria);
+        });
+        categoryGrid.appendChild(btn);
+    });
+}
+
+function confirmarCategoria(categoria) {
+    if (!pendingItem) {
+        return;
+    }
+
+    if (pendingItem.mode === "create") {
+        const nuevoDetalle = new Detalle(pendingItem.idLista, pendingItem.producto, false, categoria);
+        addDetail(nuevoDetalle);
+        inputNuevoItem.value = "";
+    } else if (pendingItem.mode === "edit" && pendingItem.detalle) {
+        pendingItem.detalle.producto = pendingItem.producto;
+        pendingItem.detalle.categoria = categoria;
+        updateDetail(pendingItem.detalle);
+    }
+
+    const idLista = pendingItem.idLista;
+    pendingItem = null;
+    categoryDialog.close();
+    rellenarDatosLista(idLista);
+    construirListas();
+}
+
+function abrirSelectorCategoria({ idLista, producto, mode, detalle = null }) {
+    pendingItem = { idLista, producto, mode, detalle };
+    categoryDialogTitle.textContent =
+        mode === "edit" ? `Cambiar categoría de «${producto}»` : `¿Dónde va «${producto}»?`;
+    categoryDialog.showModal();
+}
+
+function normalizarCategoria(categoria) {
+    if (!categoria || !CATEGORIAS_PRODUCTO.includes(categoria)) {
+        return CATEGORIA_OTROS;
+    }
+    return categoria;
+}
+
+function normalizarDetalle(detalle) {
+    detalle.categoria = normalizarCategoria(detalle.categoria);
+    return detalle;
+}
+
+function agruparDetallesPorCategoria(detalles) {
+    const grupos = {};
+    detalles.forEach((detalle) => {
+        const categoria = normalizarCategoria(detalle.categoria);
+        if (!grupos[categoria]) {
+            grupos[categoria] = [];
+        }
+        grupos[categoria].push(detalle);
+    });
+    return grupos;
+}
 
 function crearLista() {
     const titulo = document.getElementById("inputTitulo").value.trim();
@@ -38,6 +137,28 @@ function crearLista() {
     mostrarDialogoEdicion(nuevaLista.id);
 }
 
+function construirHtmlListaAgrupada(detalles) {
+    const detallesNormalizados = detalles.map((d) => normalizarDetalle({ ...d }));
+    const grupos = agruparDetallesPorCategoria(detallesNormalizados);
+    let html = "";
+
+    CATEGORIAS_PRODUCTO.forEach((categoria) => {
+        const items = grupos[categoria];
+        if (!items || items.length === 0) {
+            return;
+        }
+
+        html += `<li class="categoria-seccion"><span class="categoria-seccion-titulo">${categoria}</span><ul>`;
+        items.forEach((detalle) => {
+            const tachado = detalle.completado ? ' style="text-decoration: line-through;"' : "";
+            html += `<li${tachado}>${detalle.producto}</li>`;
+        });
+        html += "</ul></li>";
+    });
+
+    return html || "<li>Sin productos</li>";
+}
+
 function construirListas() {
     const contenedorListas = document.getElementById("cards-container");
     contenedorListas.innerHTML = "";
@@ -54,7 +175,7 @@ function construirListas() {
                 </div>
             </div>
             <div class="card-content">
-                <ul>${detalles.map((detalle) => `<li ${detalle.completado ? 'style="text-decoration: line-through;"' : ''}>${detalle.producto}</li>`).join("")}</ul>
+                <ul class="lista-agrupada">${construirHtmlListaAgrupada(detalles)}</ul>
             </div>
             <p class="card-caption">Editado el: ${new Date(lista.fechaEdicion).toLocaleDateString()}</p>
         `;
@@ -82,6 +203,112 @@ function mostrarDialogoEdicion(idLista) {
     rellenarDatosLista(idLista);
 }
 
+function crearFilaDetalle(detalle, idLista) {
+    const li = document.createElement("li");
+    const checkbox = document.createElement("input");
+    const textoSpan = document.createElement("span");
+    const botonesDiv = document.createElement("div");
+    const btnEditar = document.createElement("button");
+    const btnEliminarDetalle = document.createElement("button");
+
+    li.className = "detalle-item";
+
+    checkbox.type = "checkbox";
+    checkbox.checked = detalle.completado;
+    checkbox.addEventListener("change", function () {
+        detalle.completado = this.checked;
+        updateDetail(detalle);
+        rellenarDatosLista(idLista);
+        construirListas();
+    });
+
+    textoSpan.textContent = detalle.producto;
+    textoSpan.className = "detalle-item-nombre";
+    if (detalle.completado) {
+        textoSpan.classList.add("completado");
+    }
+
+    btnEditar.type = "button";
+    btnEditar.textContent = "✏️";
+    btnEditar.className = "detalle-btn-icono";
+    btnEditar.addEventListener("click", function (e) {
+        e.stopPropagation();
+        const nuevoNombre = prompt("Editar producto:", detalle.producto);
+        if (nuevoNombre !== null && nuevoNombre.trim() !== "") {
+            abrirSelectorCategoria({
+                idLista,
+                producto: nuevoNombre.trim(),
+                mode: "edit",
+                detalle,
+            });
+        }
+    });
+
+    btnEliminarDetalle.type = "button";
+    btnEliminarDetalle.textContent = "🗑️";
+    btnEliminarDetalle.className = "detalle-btn-icono";
+    btnEliminarDetalle.addEventListener("click", function (e) {
+        e.stopPropagation();
+        const confirmar = confirm("¿Está seguro de que desea eliminar este item?");
+        if (confirmar) {
+            deleteDetailById(detalle.id);
+            rellenarDatosLista(idLista);
+            construirListas();
+        }
+    });
+
+    botonesDiv.className = "detalle-item-acciones";
+    botonesDiv.appendChild(btnEditar);
+    botonesDiv.appendChild(btnEliminarDetalle);
+
+    li.appendChild(checkbox);
+    li.appendChild(textoSpan);
+    li.appendChild(botonesDiv);
+
+    return li;
+}
+
+function renderizarDetallesAgrupados(idLista, contenedor) {
+    contenedor.innerHTML = "";
+    const detalles = getDetailsByListId(idLista);
+    detalles.forEach((d) => {
+        d.categoria = normalizarCategoria(d.categoria);
+    });
+    const grupos = agruparDetallesPorCategoria(detalles);
+
+    CATEGORIAS_PRODUCTO.forEach((categoria) => {
+        const items = grupos[categoria];
+        if (!items || items.length === 0) {
+            return;
+        }
+
+        const seccion = document.createElement("li");
+        seccion.className = "categoria-grupo";
+
+        const titulo = document.createElement("h4");
+        titulo.className = "categoria-titulo";
+        titulo.textContent = categoria;
+
+        const ul = document.createElement("ul");
+        ul.className = "categoria-items";
+
+        items.forEach((detalle) => {
+            ul.appendChild(crearFilaDetalle(detalle, idLista));
+        });
+
+        seccion.appendChild(titulo);
+        seccion.appendChild(ul);
+        contenedor.appendChild(seccion);
+    });
+
+    if (contenedor.children.length === 0) {
+        const vacio = document.createElement("li");
+        vacio.className = "lista-vacia";
+        vacio.textContent = "Aún no hay productos en esta lista.";
+        contenedor.appendChild(vacio);
+    }
+}
+
 function rellenarDatosLista(idLista) {
     const lista = getListById(idLista);
     if (!lista) {
@@ -89,104 +316,18 @@ function rellenarDatosLista(idLista) {
     }
 
     document.getElementById("tituloLista").textContent = lista.titulo;
-
     document.getElementById("fechaEdicion").textContent = "Editado el: " + new Date(lista.fechaEdicion).toLocaleDateString();
     inputNuevoItem.value = "";
 
     const detalleLista = document.getElementById("detalleListaUl");
-    detalleLista.innerHTML = "";
-
-    const detalles = getDetailsByListId(idLista);
-    detalles.forEach((detalle) => {
-        const li = document.createElement("li");
-        const checkbox = document.createElement("input");
-        const textoSpan = document.createElement("span");
-        const botonesDiv = document.createElement("div");
-        const btnEditar = document.createElement("button");
-        const btnEliminarDetalle = document.createElement("button");
-
-        li.style.display = "flex";
-        li.style.alignItems = "center";
-        li.style.justifyContent = "space-between";
-        li.style.marginBottom = "10px";
-
-        checkbox.type = "checkbox";
-        checkbox.checked = detalle.completado;
-        checkbox.addEventListener("change", function () {
-            detalle.completado = this.checked;
-            updateDetail(detalle);
-            rellenarDatosLista(idLista);
-            construirListas();
-        });
-
-        textoSpan.textContent = detalle.producto;
-        textoSpan.style.flex = "1";
-        textoSpan.style.marginLeft = "8px";
-        textoSpan.style.textDecoration = detalle.completado ? "line-through" : "none";
-
-        botonesDiv.style.display = "flex";
-        botonesDiv.style.gap = "8px";
-        botonesDiv.style.marginLeft = "10px";
-
-        btnEditar.textContent = "✏️";
-        btnEditar.style.background = "none";
-        btnEditar.style.border = "none";
-        btnEditar.style.cursor = "pointer";
-        btnEditar.style.fontSize = "18px";
-        btnEditar.addEventListener("click", function (e) {
-            e.stopPropagation();
-            const nuevoNombre = prompt("Editar item:", detalle.producto);
-            if (nuevoNombre !== null && nuevoNombre.trim() !== "") {
-                detalle.producto = nuevoNombre.trim();
-                updateDetail(detalle);
-                rellenarDatosLista(idLista);
-                construirListas();
-            }
-        });
-
-        btnEliminarDetalle.textContent = "🗑️";
-        btnEliminarDetalle.style.background = "none";
-        btnEliminarDetalle.style.border = "none";
-        btnEliminarDetalle.style.cursor = "pointer";
-        btnEliminarDetalle.style.fontSize = "18px";
-        btnEliminarDetalle.addEventListener("click", function (e) {
-            e.stopPropagation();
-            const confirmar = confirm("¿Está seguro de que desea eliminar este item?");
-            if (confirmar) {
-                deleteDetailById(detalle.id);
-                rellenarDatosLista(idLista);
-                construirListas();
-            }
-        });
-
-        botonesDiv.appendChild(btnEditar);
-        botonesDiv.appendChild(btnEliminarDetalle);
-
-        li.appendChild(checkbox);
-        li.appendChild(textoSpan);
-        li.appendChild(botonesDiv);
-        detalleLista.appendChild(li);
-    });
-
-    btnAgregarItem.onclick = function (e) {
-        e.stopPropagation();
-        const nombreProducto = inputNuevoItem.value.trim();
-        if (nombreProducto === "") {
-            alert("Por favor, ingresa un nombre para el item");
-            return;
-        }
-
-        const nuevoDetalle = new Detalle(idLista, nombreProducto, false);
-        addDetail(nuevoDetalle);
-        inputNuevoItem.value = "";
-        rellenarDatosLista(idLista);
-        construirListas();
-    };
+    renderizarDetallesAgrupados(idLista, detalleLista);
 
     btnEliminarListaDialog.onclick = function () {
         const confirmar = confirm("¿Está seguro de que desea eliminar esta lista? Esta acción no se puede deshacer.");
         if (confirmar) {
             deleteListWithDetails(idLista);
+            categoryDialog.close();
+            pendingItem = null;
             editDialog.close();
             construirListas();
         }
@@ -205,7 +346,6 @@ function rellenarDatosLista(idLista) {
     };
 }
 
-// STORAGE: localStorage helpers
 function getCurrentUserId() {
     return JSON.parse(localStorage.getItem("nombreUsuarioActual")) || null;
 }
@@ -223,7 +363,7 @@ function getListsByUsuario(usuarioId) {
 }
 
 function getListById(idLista) {
-    return getAllLists().find((lista) => lista.id === idLista);
+    return getAllLists().find((lista) => lista.id == idLista);
 }
 
 function updateList(listaActualizada) {
